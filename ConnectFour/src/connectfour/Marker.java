@@ -12,7 +12,7 @@ package connectfour;
 public enum Marker
 {
     MARKER1 ('\u25D9'),
-    MARKER2 ('\u06DE'),
+    MARKER2 ('\u2612'),
     MARKER3 ('\u2600'),
     MARKER4 ('\u24CD'),
     MARKER5 ('\u25CE');
@@ -31,7 +31,7 @@ public enum Marker
     
     public static char[] GetOptions()
     {
-        char[] options = {'\u25D9', '\u06DE', '\u2600', '\u24CD', '\u25CE'};
+        char[] options = {'\u25D9', '\u2612', '\u2600', '\u24CD', '\u25CE'};
         return options; 
     }
 }

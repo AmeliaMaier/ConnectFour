@@ -17,6 +17,7 @@ public class ConnectFour
 
     char[][] gameBoard;
     Logic logic;
+    Scanner input;
 
     /**
      * @param args the command line arguments
@@ -31,21 +32,52 @@ public class ConnectFour
      */
     public ConnectFour()
     {
-        int player1 = 0;
-        int player2 = 0;
-        Scanner input = new Scanner(System.in);
         Initialize();
         System.out.println("Welcome to Connect Four");
+        GetMarkerSelection();
+        System.out.println("Player 1 Marker: " + this.logic.GetPlayer1()
+                + "  Player 2 Marker: " + this.logic.GetPlayer2());
+        boolean gameOver = false;
+        do
+        {
+            GetMove();
+            if (this.logic.WinCondition())
+            {
+                System.out.printf("Congragulations. Player %s is the winner!\n",
+                        (this.logic.GetTurnCount()%2 == 1 ? "1" : "2"));
+                OutputBoard();
+                gameOver = true;
+            } else if (this.logic.BoardFull())
+            {
+                System.out.println("The board is full. This game is a draw.");
+                OutputBoard();
+                gameOver = true;
+            }
+
+        } while (!gameOver);
+    }
+
+    public void Initialize()
+    {
+        //gameboard high, then wide
+        this.logic = new Logic();
+        this.gameBoard = logic.GetBoard();
+        this.input = new Scanner(System.in);
+    }
+
+    /**
+     * Gets user to select the marker for player1 and player2 passes them to
+     * Logic
+     */
+    public void GetMarkerSelection()
+    {
+        int player1 = 0;
+        int player2 = 0;
         char[] markerOptions = Marker.GetOptions();
         do
         {
-            if (player1 == 0)
-            {
-                System.out.println("Please select a marker for player 1.");
-            } else
-            {
-                System.out.println("Please select a marker for player 2.");
-            }
+            System.out.printf("Please select a marker for player %s.\n",
+                    (player1 == 0 ? "1" : "2"));
             for (int x = 0; x < markerOptions.length; x++)
             {
                 if (player1 == x + 1)
@@ -88,15 +120,41 @@ public class ConnectFour
             }
         } while (player1 == 0 || player2 == 0);
         logic.SetMarkers(player1, player2);
-        System.out.println("Player 1 Marker: " + logic.GetPlayer1() + 
-                "  Player 2 Marker: " + logic.GetPlayer2());
     }
 
-    public void Initialize()
+    public void GetMove()
     {
-        //gameboard high, then wide
-        this.logic = new Logic();
-        this.gameBoard = logic.GetBoard();
+        int move = -1;
+        do
+        {
+            OutputBoard();
+            try
+            {
+                System.out.printf("Player %s\n" + "Please enter your move.\n",
+                        (this.logic.GetTurnCount() % 2 == 0 ? "1" : "2"));
+                do
+                {
+                    System.out.print("Chose a column to place your marker in.");
+                    move = input.nextInt();
+                    if (move < 1 || move > 7)
+                    {
+                        System.out.println("Please only enter a number 1-7.");
+                    }
+                } while (move < 1 || move > 7);
+            } catch (InputMismatchException e)
+            {
+                System.out.println("Please only enter a number 1-7.");
+                input.nextLine();
+            }
+            if (move > 0 && move < 8)
+            {
+                if (!this.logic.PlaceMarker(move))
+                {
+                    System.out.println("That is not a valid move.");
+                    move = -1;
+                }
+            }
+        } while (move == -1);
     }
 
     /**
@@ -208,5 +266,4 @@ public class ConnectFour
             }
         }
     }
-
 }
