@@ -15,7 +15,8 @@ public enum Marker
     MARKER2 ('\u2612'),
     MARKER3 ('\u2600'),
     MARKER4 ('\u24CD'),
-    MARKER5 ('\u25CE');
+    MARKER5 ('\u25CE'),
+    EMPTY ('\u2591');
     
     private final char marker;
     

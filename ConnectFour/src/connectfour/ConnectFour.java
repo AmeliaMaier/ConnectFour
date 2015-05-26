@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package connectfour;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
  *
  * @author Lia

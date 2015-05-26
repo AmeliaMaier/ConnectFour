@@ -25,13 +25,13 @@ public class Logic
         turnCount = 0;
     }
 
-    public void SetBoardEmpty()
+    private void SetBoardEmpty()
     {
-        for (int x = 0; x < this.board.length; x++)
+        for (char[] board1 : this.board)
         {
             for (int y = 0; y < this.board[0].length; y++)
             {
-                board[x][y] = '\u2591';
+                board1[y] = Marker.EMPTY.GetMarker();
             }
         }
     }
@@ -109,7 +109,7 @@ public class Logic
 
         for (int row = this.board.length - 1; row >= 0; row--)
         {
-            if (this.board[row][move - 1] == '\u2591')
+            if (this.board[row][move - 1] == Marker.EMPTY.GetMarker())
             {
                 this.board[row][move - 1] = marker;
                 turnCount++;
@@ -124,6 +124,7 @@ public class Logic
      * only 42 markers can fit on the board
      *
      * otherwise returns false because there are still open spaces
+     * @return 
      */
     public boolean BoardFull()
     {

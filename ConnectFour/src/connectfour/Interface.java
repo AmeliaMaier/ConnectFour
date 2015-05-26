@@ -20,11 +20,9 @@ public class Interface
 
     public Interface()
     {
-        System.out.println("\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B"
-                + "\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B\uFE4B");
+        OutputLine();
         System.out.println("\ufe34 Welcome to Connect Four \ufe34");
-        System.out.println("\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F"
-                + "\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F");
+        OutputLine();
         do
         {
             Initialize();
@@ -32,6 +30,12 @@ public class Interface
             RunOneGame();
 
         } while (PlayAgain());
+    }
+
+    private void OutputLine()
+    {
+        System.out.println("\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F"
+                + "\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F");
     }
 
     private void Initialize()
@@ -107,20 +111,16 @@ public class Interface
             GetMove();
             if (this.logic.WinCondition())
             {
-                System.out.println("\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F"
-                + "\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F");
-                System.out.println("\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F"
-                + "\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F");
+                OutputLine();
+                OutputLine();
                 System.out.printf("Congragulations. Player %s is the winner!\n",
                         (this.logic.GetTurnCount() % 2 == 1 ? "1" : "2"));
                 OutputBoard();
                 gameOver = true;
             } else if (this.logic.BoardFull())
             {
-                System.out.println("\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F"
-                + "\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F");
-                System.out.println("\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F"
-                + "\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F");
+                OutputLine();
+                OutputLine();
                 System.out.println("The board is full. This game is a draw.");
                 OutputBoard();
                 gameOver = true;
@@ -131,9 +131,8 @@ public class Interface
     private void GetMove()
     {
         int move = -1;
-        System.out.println("\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F"
-                + "\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F\uFE4F");
-            OutputBoard();
+        OutputLine();
+        OutputBoard();
         do
         {
             try
