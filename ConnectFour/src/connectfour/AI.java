@@ -18,24 +18,50 @@ public class AI
 {
 
     private final int level;
-    private char[][] board;
+    private AILevel levelID;
 
     public AI(int level)
     {
         this.level = level;
+        switch (level)
+        {
+            case 1:
+                levelID = AILevel.Level1;
+                break;
+            case 2:
+                levelID = AILevel.Level2;
+                break;
+            case 3:
+                levelID = AILevel.Level3;
+                break;
+        }
     }
 
-    public int GetAIMove(char[][] board, char marker, int turnCount)
+    public int GetAIMove(char[][] board, char markerAI, char markerPlayer, int turnCount)
     {
-        this.board = board;
-        int move = -1;
+        int move = 0;
         switch (level)
         {
             case 1:
                 move = LevelOneMove();
                 break;
             case 2:
-                move = LevelTwoMove(marker, turnCount);
+                move = LevelTwoMove(board, markerAI, turnCount);
+                if (move == 0)
+                {
+                    move = LevelOneMove();
+                }
+                break;
+            case 3:
+                move = LevelTwoMove(board, markerAI, turnCount);
+                if (move == 0)
+                {
+                    move = LevelTwoMove(board, markerPlayer, turnCount);
+                }
+                if (move == 0)
+                {
+                    move = LevelOneMove();
+                }
                 break;
         }
         return move;
@@ -44,99 +70,89 @@ public class AI
     private int LevelOneMove()
     {
         Random random = new Random();
-        return (random.nextInt(5) + 1);
+        return (random.nextInt(6) + 1);
     }
 
-    private int LevelTwoMove(char marker, int turnCount)
+    private int LevelTwoMove(char[][] board, char marker, int turnCount)
     {
-        int move = -1;
         //AI checks if possible to win this turn, otherwise Level 1 
-        for (int row = this.board.length - 1; row > 0; row++)
+        if(turnCount <6)
         {
-            for (int column = 0; column < this.board[0].length; column++)
+            return 0;
+        }
+        for (int row = board.length - 1; row >= 0; row--)
+        {
+            for (int column = board[0].length - 1; column >= 0; column--)
             {
-                if (this.board[row][column] == Marker.EMPTY.GetMarker())
+                System.out.println("row: " + row + "  column: " + column);
+                if (board[row][column] == Marker.EMPTY.GetMarker())
                 {
-                    if (WinCondition(turnCount, marker, row, column))
+                    if (row >= 3)
                     {
-                        return column;
+                        if (CheckUp(board, row, column, marker, 4))
+                        {
+                            return column;
+                        }
+                        if (column <= 3)
+                        {
+                            if (CheckUpRight(board, row, column, marker, 4))
+                            {
+                                return column;
+                            }
+                        }
+                        if (column >= 3)
+                        {
+                            if (CheckUpLeft(board, row, column, marker, 4))
+                            {
+                                return column;
+                            }
+                        }
+                    } else
+                    {
+                        if (CheckDown(board, row, column, marker, 4))
+                        {
+                            return column;
+                        }
+                        if (column <= 3)
+                        {
+                            if (CheckDownRight(board, row, column, marker, 4))
+                            {
+                                return column;
+                            }
+                        }
+                        if (column >= 3)
+                        {
+                            if (CheckDownLeft(board, row, column, marker, 4))
+                            {
+                                return column;
+                            }
+                        }
+                    }
+                    if (column <= 3)
+                    {
+                        if (CheckRight(board, row, column, marker, 4))
+                        {
+                            return column;
+                        }
+                    }
+                    if (column >= 3)
+                    {
+                        if (CheckLeft(board, row, column, marker, 4))
+                        {
+                            return column;
+                        }
                     }
                 }
             }
         }
-        return move;
+        return 0;
     }
 
-    public boolean WinCondition(int turnCount, char marker, int row, int column)
+    public boolean CheckUp(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        if (turnCount <= 6)
+        for (int x = 1; x < countNeeded; x++)
         {
-            return false;
-        }
-
-        if (row >= 3)
-        {
-            if (CheckUp(row, column, marker))
-            {
-                return true;
-            }
-            if (column <= 3)
-            {
-                if (CheckUpRight(row, column, marker))
-                {
-                    return true;
-                }
-            }
-            if (column >= 3)
-            {
-                if (CheckUpLeft(row, column, marker))
-                {
-                    return true;
-                }
-            }
-        } else
-        {
-            if (CheckDown(row, column, marker))
-            {
-                return true;
-            }
-            if (column <= 3)
-            {
-                if (CheckDownRight(row, column, marker))
-                {
-                    return true;
-                }
-            }
-            if (column >= 3)
-            {
-                if (CheckDownLeft(row, column, marker))
-                {
-                    return true;
-                }
-            }
-        }
-        if (column <= 3)
-        {
-            if (CheckRight(row, column, marker))
-            {
-                return true;
-            }
-        }
-        if (column >= 3)
-        {
-            if (CheckLeft(row, column, marker))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean CheckUp(int row, int column, char possibleWinner)
-    {
-        for (int x = 1; x < 4; x++)
-        {
-            if (this.board[row - x][column] != possibleWinner)
+            if (board[row - x][column] != marker)
             {
                 return false;
             }
@@ -144,11 +160,11 @@ public class AI
         return true;
     }
 
-    public boolean CheckUpLeft(int row, int column, char possibleWinner)
+    public boolean CheckUpLeft(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < 4; x++)
+        for (int x = 1; x < countNeeded; x++)
         {
-            if (this.board[row - x][column - x] != possibleWinner)
+            if (board[row - x][column - x] != marker)
             {
                 return false;
             }
@@ -156,11 +172,11 @@ public class AI
         return true;
     }
 
-    public boolean CheckUpRight(int row, int column, char possibleWinner)
+    public boolean CheckUpRight(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < 4; x++)
+        for (int x = 1; x < countNeeded; x++)
         {
-            if (this.board[row - x][column + x] != possibleWinner)
+            if (board[row - x][column + x] != marker)
             {
                 return false;
             }
@@ -168,11 +184,11 @@ public class AI
         return true;
     }
 
-    public boolean CheckDown(int row, int column, char possibleWinner)
+    public boolean CheckDown(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < 4; x++)
+        for (int x = 1; x < countNeeded; x++)
         {
-            if (this.board[row + x][column] != possibleWinner)
+            if (board[row + x][column] != marker)
             {
                 return false;
             }
@@ -180,11 +196,11 @@ public class AI
         return true;
     }
 
-    public boolean CheckDownLeft(int row, int column, char possibleWinner)
+    public boolean CheckDownLeft(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < 4; x++)
+        for (int x = 1; x < countNeeded; x++)
         {
-            if (this.board[row + x][column - x] != possibleWinner)
+            if (board[row + x][column - x] != marker)
             {
                 return false;
             }
@@ -192,11 +208,11 @@ public class AI
         return true;
     }
 
-    public boolean CheckDownRight(int row, int column, char possibleWinner)
+    public boolean CheckDownRight(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < 4; x++)
+        for (int x = 1; x < countNeeded; x++)
         {
-            if (this.board[row + x][column + x] != possibleWinner)
+            if (board[row + x][column + x] != marker)
             {
                 return false;
             }
@@ -204,11 +220,11 @@ public class AI
         return true;
     }
 
-    public boolean CheckLeft(int row, int column, char possibleWinner)
+    public boolean CheckLeft(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < 4; x++)
+        for (int x = 1; x < countNeeded; x++)
         {
-            if (this.board[row][column - x] != possibleWinner)
+            if (board[row][column - x] != marker)
             {
                 return false;
             }
@@ -216,16 +232,21 @@ public class AI
         return true;
     }
 
-    public boolean CheckRight(int row, int column, char possibleWinner)
+    public boolean CheckRight(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < 4; x++)
+        for (int x = 1; x < countNeeded; x++)
         {
-            if (this.board[row][column + x] != possibleWinner)
+            if (board[row][column + x] != marker)
             {
                 return false;
             }
         }
         return true;
+    }
+    
+    public String GetDifficultyLevel()
+    {
+        return levelID.GetLevel();
     }
 
 }

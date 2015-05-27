@@ -17,7 +17,9 @@ public class ConnectFour
 
     char[][] gameBoard;
     Logic logic;
+    AI ai;
     Scanner input;
+    boolean hotSeat;
 
     /**
      * @param args the command line arguments
@@ -36,6 +38,11 @@ public class ConnectFour
         {
             Initialize();
             GetMarkerSelection();
+            HotSeatOrAI();
+            if (!hotSeat)
+            {
+                LevelSelection();
+            }
             RunOneGame();
 
         } while (PlayAgain());
@@ -53,6 +60,7 @@ public class ConnectFour
         this.logic = new Logic();
         this.gameBoard = logic.GetBoard();
         this.input = new Scanner(System.in);
+        this.hotSeat = true;
     }
 
     /**
@@ -112,6 +120,58 @@ public class ConnectFour
         logic.SetMarkers(player1, player2);
     }
 
+    private void HotSeatOrAI()
+    {
+        int choose = 0;
+        System.out.println("Would you like to play Hot Seat or play the AI?");
+        do
+        {
+            try
+            {
+                System.out.print("1: Hot Seat\n2: AI");
+                choose = input.nextInt();
+                if (choose < 1 || choose > 2)
+                {
+                    System.out.print("Please only enter 1 or 2.\n");
+                    choose = 0;
+                }
+            } catch (InputMismatchException e)
+            {
+                System.out.print("Please only enter 1 or 2.\n");
+                input.nextLine();
+            }
+        } while (choose == 0);
+        hotSeat = (choose == 1);
+    }
+
+    private void LevelSelection()
+    {
+        int level = 0;
+        String[] levelOptions = AILevel.GetOptions();
+        System.out.println("Which difficulty level would you like?");
+        do
+        {
+            for (int x = 0; x < levelOptions.length; x++)
+            {
+                System.out.print((x + 1) + ". " + levelOptions[x] + "\n");
+            }
+            try
+            {
+                level = input.nextInt();
+                if (level < 1 || level > (levelOptions.length + 1))
+                {
+                    System.out.print("Please only enter a number 1-3.\n");
+                    level = 0;
+                }
+            } catch (InputMismatchException e)
+            {
+                System.out.print("Please only enter a number 1-3.\n");
+                input.nextLine();
+            }
+        } while (level == 0);
+        ai = new AI(level);
+    }
+
     private void RunOneGame()
     {
         boolean gameOver = false;
@@ -122,8 +182,14 @@ public class ConnectFour
             {
                 OutputLine();
                 OutputLine();
-                System.out.printf("Congragulations. Player %s is the winner!\n",
-                        (this.logic.GetTurnCount() % 2 == 1 ? "1" : "2"));
+                if (hotSeat || this.logic.GetTurnCount() % 2 == 1)
+                {
+                    System.out.printf("Congragulations. Player %s is the winner!\n",
+                            (this.logic.GetTurnCount() % 2 == 1 ? "1" : "2"));
+                } else
+                {
+                    System.out.println("Sorry, you loose.");
+                }
                 OutputBoard();
                 gameOver = true;
             } else if (this.logic.BoardFull())
@@ -139,38 +205,54 @@ public class ConnectFour
 
     private void GetMove()
     {
-        int move = -1;
+        int move = 0;
         OutputLine();
         OutputBoard();
         do
         {
             try
             {
-                System.out.printf("PLAYER %s\n" + "Please enter your move.\n",
-                        (this.logic.GetTurnCount() % 2 == 0 ? "1" : "2"));
+                if (hotSeat)
+                {
+                    System.out.printf("PLAYER %s\n" + "Please enter your move.\n",
+                            (this.logic.GetTurnCount() % 2 == 0 ? "1" : "2"));
+                } else if (this.logic.GetTurnCount() % 2 == 0)
+                {
+                    System.out.println("PLAYER 1\nPlease enter your move.\n");
+                }
                 do
                 {
-                    System.out.print("Chose a column to place your marker in.");
-                    move = input.nextInt();
-                    if (move < 1 || move > 7)
+                    if (hotSeat || this.logic.GetTurnCount() % 2 == 0)
                     {
-                        System.out.println("Please only enter a number 1-7.");
+                        System.out.print("Chose a column to place your marker in.");
+                        move = input.nextInt();
+                        if (move < 1 || move > 7)
+                        {
+                            System.out.println("Please only enter a number 1-7.");
+                        }
+                    } else
+                    {
+                        move = this.logic.GetAIMove(ai);
                     }
                 } while (move < 1 || move > 7);
             } catch (InputMismatchException e)
             {
                 System.out.println("Please only enter a number 1-7.");
                 input.nextLine();
+                move = 0;
             }
             if (move > 0 && move < 8)
             {
                 if (!this.logic.PlaceMarker(move))
                 {
-                    System.out.println("That is not a valid move.");
-                    move = -1;
+                    if (hotSeat)
+                    {
+                        System.out.println("That is not a valid move.");
+                    }
+                    move = 0;
                 }
             }
-        } while (move == -1);
+        } while (move == 0);
     }
 
     /**
