@@ -7,13 +7,6 @@ package connectfour;
 
 import java.util.Random;
 
-/**
- * Level 1 = AI works randomly Level 2 = AI checks if possible to win this turn,
- * otherwise Level 1 Level 3 = Level 2, otherwise blocks player 1 if possible
- * for player 1 to win next turn, otherwise Level 1 Level 4 = Level 3, but makes
- * sure not setting player 1 up to win with piece placement Level 5 and up =
- * need more research
- */
 public class AI
 {
 
@@ -49,6 +42,10 @@ public class AI
                 move = LevelTwoMove(board, markerAI, turnCount);
                 if (move == 0)
                 {
+                    move = LevelTwoMoveSkip(board, markerAI, turnCount);
+                }
+                if (move == 0)
+                {
                     move = LevelOneMove();
                 }
                 break;
@@ -56,7 +53,15 @@ public class AI
                 move = LevelTwoMove(board, markerAI, turnCount);
                 if (move == 0)
                 {
+                    move = LevelTwoMoveSkip(board, markerAI, turnCount);
+                }
+                if (move == 0)
+                {
                     move = LevelTwoMove(board, markerPlayer, turnCount);
+                }
+                if (move == 0)
+                {
+                    move = LevelTwoMoveSkip(board, markerPlayer, turnCount);
                 }
                 if (move == 0)
                 {
@@ -75,77 +80,79 @@ public class AI
 
     private int LevelTwoMove(char[][] board, char marker, int turnCount)
     {
-        //AI checks if possible to win this turn, otherwise Level 1 
-        if(turnCount <6)
+        int move = 0;
+        if (turnCount < 6)
         {
-            return 0;
+            return move;
         }
         for (int row = board.length - 1; row >= 0; row--)
         {
             for (int column = board[0].length - 1; column >= 0; column--)
             {
-                System.out.println("row: " + row + "  column: " + column);
-                if (board[row][column] == Marker.EMPTY.GetMarker())
+                if (row == 5 || board[row + 1][column] != Marker.EMPTY.GetMarker())
                 {
-                    if (row >= 3)
+                    if (board[row][column] == Marker.EMPTY.GetMarker())
                     {
-                        if (CheckUp(board, row, column, marker, 4))
+                        if (row >= 3)
                         {
-                            return column;
+                            if (CheckUp(board, row, column, marker, 4))
+                            {
+                                return column + 1;
+                            }
+                            if (column <= 3)
+                            {
+                                if (CheckUpRight(board, row, column, marker, 4))
+                                {
+                                    return column + 1;
+                                }
+                            }
+                            if (column >= 3)
+                            {
+                                if (CheckUpLeft(board, row, column, marker, 4))
+                                {
+                                    return column + 1;
+                                }
+                            }
+                        } else
+                        {
+                            if (CheckDown(board, row, column, marker, 4))
+                            {
+                                return column + 1;
+                            }
+                            if (column <= 3)
+                            {
+                                if (CheckDownRight(board, row, column, marker, 4))
+                                {
+                                    return column + 1;
+                                }
+                            }
+                            if (column >= 3)
+                            {
+                                if (CheckDownLeft(board, row, column, marker, 4))
+                                {
+                                    return column + 1;
+                                }
+                            }
                         }
                         if (column <= 3)
                         {
-                            if (CheckUpRight(board, row, column, marker, 4))
+                            if (CheckRight(board, row, column, marker, 4))
                             {
-                                return column;
+                                return column + 1;
                             }
                         }
                         if (column >= 3)
                         {
-                            if (CheckUpLeft(board, row, column, marker, 4))
+                            if (CheckLeft(board, row, column, marker, 4))
                             {
-                                return column;
+                                return column + 1;
                             }
-                        }
-                    } else
-                    {
-                        if (CheckDown(board, row, column, marker, 4))
-                        {
-                            return column;
-                        }
-                        if (column <= 3)
-                        {
-                            if (CheckDownRight(board, row, column, marker, 4))
-                            {
-                                return column;
-                            }
-                        }
-                        if (column >= 3)
-                        {
-                            if (CheckDownLeft(board, row, column, marker, 4))
-                            {
-                                return column;
-                            }
-                        }
-                    }
-                    if (column <= 3)
-                    {
-                        if (CheckRight(board, row, column, marker, 4))
-                        {
-                            return column;
-                        }
-                    }
-                    if (column >= 3)
-                    {
-                        if (CheckLeft(board, row, column, marker, 4))
-                        {
-                            return column;
                         }
                     }
                 }
             }
         }
-        return 0;
+        return move;
     }
 
     public boolean CheckUp(char[][] board, int row, int column, char marker, int countNeeded)
@@ -243,10 +250,231 @@ public class AI
         }
         return true;
     }
-    
+
     public String GetDifficultyLevel()
     {
         return levelID.GetLevel();
     }
 
+    private int LevelTwoMoveSkip(char[][] board, char marker, int turnCount)
+    {
+        int move = 0;
+        if (turnCount < 6)
+        {
+            return move;
+        }
+        for (int row = board.length - 1; row >= 0; row--)
+        {
+            for (int column = board[0].length - 1; column >= 0; column--)
+            {
+                if (board[row][column] == marker)
+                {
+                    if (row >= 3)
+                    {
+                        if (column <= 3)
+                        {
+                            move = CheckUpRightSkip(board, row, column, marker, 4);
+                            if (move != 0)
+                            {
+                                return move;
+                            }
+                        }
+                        if (column >= 3)
+                        {
+                            move = CheckUpLeftSkip(board, row, column, marker, 4);
+                            if (move != 0)
+                            {
+                                return move;
+                            }
+                        }
+                    } else
+                    {
+                        if (column <= 3)
+                        {
+                            move = CheckDownRightSkip(board, row, column, marker, 4);
+                            if (move != 0)
+                            {
+                                return move;
+                            }
+                        }
+                        if (column >= 3)
+                        {
+                            move = CheckDownLeftSkip(board, row, column, marker, 4);
+                            if (move != 0)
+                            {
+                                return move;
+                            }
+                        }
+                    }
+                    if (column <= 3)
+                    {
+                        move = CheckRightSkip(board, row, column, marker, 4);
+                        if (move != 0)
+                        {
+                            return move;
+                        }
+                    }
+                    if (column >= 3)
+                    {
+                        move = CheckLeftSkip(board, row, column, marker, 4);
+                        if (move != 0)
+                        {
+                            return move;
+                        }
+                    }
+                }
+            }
+        }
+        return move;
+    }
+
+    public int CheckUpLeftSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
+        {
+            if (board[row - x][column - x] != marker)
+            {
+                if (skipped == 0 && board[row - x][column - x] == Marker.EMPTY.GetMarker())
+                {
+                    if (board[(row - x) + 1][column - x] != Marker.EMPTY.GetMarker())
+                    {
+                        skipped = column - x + 1;
+                    } else
+                    {
+                        return 0;
+                    }
+                } else
+                {
+                    return 0;
+                }
+            }
+        }
+        return skipped;
+    }
+
+    public int CheckUpRightSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
+        {
+            if (board[row - x][column + x] != marker)
+            {
+                if (skipped == 0 && board[row - x][column + x] == Marker.EMPTY.GetMarker())
+                {
+                    if (board[(row - x) + 1][column + x] != Marker.EMPTY.GetMarker())
+                    {
+                        skipped = column + x + 1;
+                    } else
+                    {
+                        return 0;
+                    }
+                } else
+                {
+                    return 0;
+                }
+            }
+        }
+        return skipped;
+    }
+
+    public int CheckDownLeftSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
+        {
+            if (board[row + x][column - x] != marker)
+            {
+                if (skipped == 0 && board[row + x][column - x] == Marker.EMPTY.GetMarker())
+                {
+                    if ((row + x) == 5 || board[(row + x) + 1][column - x] != Marker.EMPTY.GetMarker())
+                    {
+                        skipped = column - x + 1;
+                    } else
+                    {
+                        return 0;
+                    }
+                } else
+                {
+                    return 0;
+                }
+            }
+        }
+        return skipped;
+    }
+
+    public int CheckDownRightSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
+        {
+            if (board[row + x][column + x] != marker)
+            {
+                if (skipped == 0 && board[row + x][column + x] == Marker.EMPTY.GetMarker())
+                {
+                    if ((row + x) == 5 || board[(row + x) + 1][column + x] != Marker.EMPTY.GetMarker())
+                    {
+                        skipped = column + x + 1;
+                    } else
+                    {
+                        return 0;
+                    }
+                } else
+                {
+                    return 0;
+                }
+            }
+        }
+        return skipped;
+    }
+
+    public int CheckLeftSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
+        {
+            if (board[row][column - x] != marker)
+            {
+                if (skipped == 0 && board[row][column - x] == Marker.EMPTY.GetMarker())
+                {
+                    if (row == 5 || board[row + 1][column - x] != Marker.EMPTY.GetMarker())
+                    {
+                        skipped = column - x + 1;
+                    } else
+                    {
+                        return 0;
+                    }
+                } else
+                {
+                    return 0;
+                }
+            }
+        }
+        return skipped;
+    }
+
+    public int CheckRightSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
+        {
+            if (board[row][column + x] != marker)
+            {
+                if (skipped == 0 && board[row][column + x] == Marker.EMPTY.GetMarker())
+                {
+                    if (row == 5 || board[row + 1][column + x] != Marker.EMPTY.GetMarker())
+                    {
+                        skipped = column + x + 1;
+                    } else
+                    {
+                        return 0;
+                    }
+                } else
+                {
+                    return 0;
+                }
+            }
+        }
+        return skipped;
+    }
 }

@@ -12,8 +12,8 @@ package connectfour;
 public enum AILevel
 {
     Level1 ("Random Moves"),
-    Level2 ("Silly Easy"),
-    Level3 ("Easy");
+    Level2 ("Easy"),
+    Level3 ("Medium");
     private final String level;
     
     AILevel(String level)
@@ -28,7 +28,7 @@ public enum AILevel
     
     public static String[] GetOptions()
     {
-        String[] levelOptions = {"Random Moves", "Silly Easy", "Easy"};
+        String[] levelOptions = {"Random Moves", "Easy", "Medium"};
         return levelOptions;
     }
 }

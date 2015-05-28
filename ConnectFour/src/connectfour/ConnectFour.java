@@ -182,11 +182,12 @@ public class ConnectFour
             {
                 OutputLine();
                 OutputLine();
-                if (hotSeat || this.logic.GetTurnCount() % 2 == 1)
+                if(hotSeat || this.logic.GetTurnCount() % 2 == 1)
                 {
-                    System.out.printf("Congragulations. Player %s is the winner!\n",
-                            (this.logic.GetTurnCount() % 2 == 1 ? "1" : "2"));
-                } else
+                System.out.printf("Congragulations. Player %s is the winner!\n",
+                        (this.logic.GetTurnCount() % 2 == 1 ? "1" : "2"));
+                }
+                else
                 {
                     System.out.println("Sorry, you loose.");
                 }

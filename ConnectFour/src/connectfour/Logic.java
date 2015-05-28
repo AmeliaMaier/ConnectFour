@@ -98,7 +98,7 @@ public class Logic
 
     public int GetAIMove(AI ai)
     {
-        return (ai.GetAIMove(this.board, player2.GetMarker(), player1.GetMarker(), this.turnCount) + 1);
+        return ai.GetAIMove(this.board, player2.GetMarker(), player1.GetMarker(), this.turnCount);
     }
     public boolean PlaceMarker(int move)
     {
