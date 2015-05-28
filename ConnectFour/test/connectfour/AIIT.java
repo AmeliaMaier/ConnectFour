@@ -238,7 +238,7 @@ public class AIIT
     }
 
     /**
-     * Test of CheckUpLeftSkip method, of class AI.
+     * Test of CheckUpLeft method, of class AI.
      */
     @Test
     public void testCheckUpLeftSkip()
@@ -251,14 +251,14 @@ public class AIIT
         int countNeeded = 0;
         AI instance = null;
         int expResult = 0;
-        int result = instance.CheckUpLeftSkip(board, row, column, marker, countNeeded);
+        int result = instance.CheckUpLeft(board, row, column, marker, countNeeded);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of CheckUpRightSkip method, of class AI.
+     * Test of CheckUpRight method, of class AI.
      */
     @Test
     public void testCheckUpRightSkip()
@@ -271,14 +271,14 @@ public class AIIT
         int countNeeded = 0;
         AI instance = null;
         int expResult = 0;
-        int result = instance.CheckUpRightSkip(board, row, column, marker, countNeeded);
+        int result = instance.CheckUpRight(board, row, column, marker, countNeeded);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of CheckDownLeftSkip method, of class AI.
+     * Test of CheckDownLeft method, of class AI.
      */
     @Test
     public void testCheckDownLeftSkip()
@@ -291,14 +291,14 @@ public class AIIT
         int countNeeded = 0;
         AI instance = null;
         int expResult = 0;
-        int result = instance.CheckDownLeftSkip(board, row, column, marker, countNeeded);
+        int result = instance.CheckDownLeft(board, row, column, marker, countNeeded);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of CheckDownRightSkip method, of class AI.
+     * Test of CheckDownRight method, of class AI.
      */
     @Test
     public void testCheckDownRightSkip()
@@ -311,14 +311,14 @@ public class AIIT
         int countNeeded = 0;
         AI instance = null;
         int expResult = 0;
-        int result = instance.CheckDownRightSkip(board, row, column, marker, countNeeded);
+        int result = instance.CheckDownRight(board, row, column, marker, countNeeded);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of CheckLeftSkip method, of class AI.
+     * Test of CheckLeft method, of class AI.
      */
     @Test
     public void testCheckLeftSkip()
@@ -331,14 +331,14 @@ public class AIIT
         int countNeeded = 0;
         AI instance = null;
         int expResult = 0;
-        int result = instance.CheckLeftSkip(board, row, column, marker, countNeeded);
+        int result = instance.CheckLeft(board, row, column, marker, countNeeded);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of CheckRightSkip method, of class AI.
+     * Test of CheckRight method, of class AI.
      */
     @Test
     public void testCheckRightSkip()
@@ -351,7 +351,7 @@ public class AIIT
         int countNeeded = 0;
         AI instance = null;
         int expResult = 0;
-        int result = instance.CheckRightSkip(board, row, column, marker, countNeeded);
+        int result = instance.CheckRight(board, row, column, marker, countNeeded);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

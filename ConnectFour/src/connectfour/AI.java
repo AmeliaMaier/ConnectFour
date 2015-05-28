@@ -27,6 +27,9 @@ public class AI
             case 3:
                 levelID = AILevel.Level3;
                 break;
+            case 4:
+                levelID = AILevel.Level4;
+                break;
         }
     }
 
@@ -40,33 +43,26 @@ public class AI
                 break;
             case 2:
                 move = LevelTwoMove(board, markerAI, turnCount);
-                if (move == 0)
-                {
-                    move = LevelTwoMoveSkip(board, markerAI, turnCount);
-                }
+
                 if (move == 0)
                 {
                     move = LevelOneMove();
                 }
                 break;
             case 3:
+
                 move = LevelTwoMove(board, markerAI, turnCount);
-                if (move == 0)
-                {
-                    move = LevelTwoMoveSkip(board, markerAI, turnCount);
-                }
                 if (move == 0)
                 {
                     move = LevelTwoMove(board, markerPlayer, turnCount);
                 }
                 if (move == 0)
                 {
-                    move = LevelTwoMoveSkip(board, markerPlayer, turnCount);
-                }
-                if (move == 0)
-                {
                     move = LevelOneMove();
                 }
+                break;
+            case 4:
+                //same as 3 except won't set player1 up for win
                 break;
         }
         return move;
@@ -89,191 +85,18 @@ public class AI
         {
             for (int column = board[0].length - 1; column >= 0; column--)
             {
-                if (row == 5 || board[row + 1][column] != Marker.EMPTY.GetMarker())
-                {
-                    if (board[row][column] == Marker.EMPTY.GetMarker())
-                    {
-                        if (row >= 3)
-                        {
-                            if (CheckUp(board, row, column, marker, 4))
-                            {
-                                return column + 1;
-                            }
-                            if (column <= 3)
-                            {
-                                if (CheckUpRight(board, row, column, marker, 4))
-                                {
-                                    return column + 1;
-                                }
-                            }
-                            if (column >= 3)
-                            {
-                                if (CheckUpLeft(board, row, column, marker, 4))
-                                {
-                                    return column + 1;
-                                }
-                            }
-                        } else
-                        {
-                            if (CheckDown(board, row, column, marker, 4))
-                            {
-                                return column + 1;
-                            }
-                            if (column <= 3)
-                            {
-                                if (CheckDownRight(board, row, column, marker, 4))
-                                {
-                                    return column + 1;
-                                }
-                            }
-                            if (column >= 3)
-                            {
-                                if (CheckDownLeft(board, row, column, marker, 4))
-                                {
-                                    return column + 1;
-                                }
-                            }
-                        }
-                        if (column <= 3)
-                        {
-                            if (CheckRight(board, row, column, marker, 4))
-                            {
-                                return column + 1;
-                            }
-                        }
-                        if (column >= 3)
-                        {
-                            if (CheckLeft(board, row, column, marker, 4))
-                            {
-                                return column + 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return move;
-    }
-
-    public boolean CheckUp(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row - x][column] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean CheckUpLeft(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row - x][column - x] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean CheckUpRight(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row - x][column + x] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean CheckDown(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row + x][column] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean CheckDownLeft(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row + x][column - x] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean CheckDownRight(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row + x][column + x] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean CheckLeft(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row][column - x] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean CheckRight(char[][] board, int row, int column, char marker, int countNeeded)
-    {
-        for (int x = 1; x < countNeeded; x++)
-        {
-            if (board[row][column + x] != marker)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public String GetDifficultyLevel()
-    {
-        return levelID.GetLevel();
-    }
-
-    private int LevelTwoMoveSkip(char[][] board, char marker, int turnCount)
-    {
-        int move = 0;
-        if (turnCount < 6)
-        {
-            return move;
-        }
-        for (int row = board.length - 1; row >= 0; row--)
-        {
-            for (int column = board[0].length - 1; column >= 0; column--)
-            {
                 if (board[row][column] == marker)
                 {
                     if (row >= 3)
                     {
+                        move = CheckUp(board, row, column, marker, 4);
+                        if (move != 0)
+                        {
+                            return move;
+                        }
                         if (column <= 3)
                         {
-                            move = CheckUpRightSkip(board, row, column, marker, 4);
+                            move = CheckUpRight(board, row, column, marker, 4);
                             if (move != 0)
                             {
                                 return move;
@@ -281,7 +104,7 @@ public class AI
                         }
                         if (column >= 3)
                         {
-                            move = CheckUpLeftSkip(board, row, column, marker, 4);
+                            move = CheckUpLeft(board, row, column, marker, 4);
                             if (move != 0)
                             {
                                 return move;
@@ -289,9 +112,14 @@ public class AI
                         }
                     } else
                     {
+                        move = CheckDown(board, row, column, marker, 4);
+                        if (move != 0)
+                        {
+                            return move;
+                        }
                         if (column <= 3)
                         {
-                            move = CheckDownRightSkip(board, row, column, marker, 4);
+                            move = CheckDownRight(board, row, column, marker, 4);
                             if (move != 0)
                             {
                                 return move;
@@ -299,7 +127,7 @@ public class AI
                         }
                         if (column >= 3)
                         {
-                            move = CheckDownLeftSkip(board, row, column, marker, 4);
+                            move = CheckDownLeft(board, row, column, marker, 4);
                             if (move != 0)
                             {
                                 return move;
@@ -308,7 +136,7 @@ public class AI
                     }
                     if (column <= 3)
                     {
-                        move = CheckRightSkip(board, row, column, marker, 4);
+                        move = CheckRight(board, row, column, marker, 4);
                         if (move != 0)
                         {
                             return move;
@@ -316,7 +144,7 @@ public class AI
                     }
                     if (column >= 3)
                     {
-                        move = CheckLeftSkip(board, row, column, marker, 4);
+                        move = CheckLeft(board, row, column, marker, 4);
                         if (move != 0)
                         {
                             return move;
@@ -328,7 +156,19 @@ public class AI
         return move;
     }
 
-    public int CheckUpLeftSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    public int CheckUp(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        for (int x = 1; x < countNeeded - 1; x++)
+        {
+            if (board[row - x][column] != marker)
+            {
+                return 0;
+            }
+        }
+        return column + 1;
+    }
+
+    public int CheckUpLeft(char[][] board, int row, int column, char marker, int countNeeded)
     {
         int skipped = 0;
         for (int x = 1; x < countNeeded; x++)
@@ -353,7 +193,7 @@ public class AI
         return skipped;
     }
 
-    public int CheckUpRightSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    public int CheckUpRight(char[][] board, int row, int column, char marker, int countNeeded)
     {
         int skipped = 0;
         for (int x = 1; x < countNeeded; x++)
@@ -378,7 +218,19 @@ public class AI
         return skipped;
     }
 
-    public int CheckDownLeftSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    public int CheckDown(char[][] board, int row, int column, char marker, int countNeeded)
+    {
+        for (int x = 1; x < countNeeded - 1; x++)
+        {
+            if (board[row + x][column] != marker)
+            {
+                return 0;
+            }
+        }
+        return column + 1;
+    }
+
+    public int CheckDownLeft(char[][] board, int row, int column, char marker, int countNeeded)
     {
         int skipped = 0;
         for (int x = 1; x < countNeeded; x++)
@@ -403,7 +255,7 @@ public class AI
         return skipped;
     }
 
-    public int CheckDownRightSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    public int CheckDownRight(char[][] board, int row, int column, char marker, int countNeeded)
     {
         int skipped = 0;
         for (int x = 1; x < countNeeded; x++)
@@ -428,7 +280,7 @@ public class AI
         return skipped;
     }
 
-    public int CheckLeftSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    public int CheckLeft(char[][] board, int row, int column, char marker, int countNeeded)
     {
         int skipped = 0;
         for (int x = 1; x < countNeeded; x++)
@@ -453,7 +305,7 @@ public class AI
         return skipped;
     }
 
-    public int CheckRightSkip(char[][] board, int row, int column, char marker, int countNeeded)
+    public int CheckRight(char[][] board, int row, int column, char marker, int countNeeded)
     {
         int skipped = 0;
         for (int x = 1; x < countNeeded; x++)
@@ -477,4 +329,10 @@ public class AI
         }
         return skipped;
     }
+
+    public String GetDifficultyLevel()
+    {
+        return levelID.GetLevel();
+    }
+
 }

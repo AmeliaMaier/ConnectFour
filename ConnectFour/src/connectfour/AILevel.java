@@ -13,7 +13,8 @@ public enum AILevel
 {
     Level1 ("Random Moves"),
     Level2 ("Easy"),
-    Level3 ("Medium");
+    Level3 ("Medium"),
+    Level4 ("Hard");
     private final String level;
     
     AILevel(String level)
@@ -28,7 +29,7 @@ public enum AILevel
     
     public static String[] GetOptions()
     {
-        String[] levelOptions = {"Random Moves", "Easy", "Medium"};
+        String[] levelOptions = {"Random Moves", "Easy", "Medium", "Hard"};
         return levelOptions;
     }
 }
