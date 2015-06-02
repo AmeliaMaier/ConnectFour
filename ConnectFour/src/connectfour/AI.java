@@ -49,54 +49,67 @@ public class AI
         switch (this.level)
         {
             case 1:
-                move = LevelOneMove();
+                move = RandomAIMove(board);
                 break;
             case 2:
-                move = LevelTwoMove(board, turnCount);
-
+                move = WinningAIMove(board, turnCount);
                 if (move == 0)
                 {
-                    move = LevelOneMove();
+                    move = RandomAIMove(board);
                 }
                 break;
             case 3:
-                move = LevelTwoMove(board, turnCount);
+                move = WinningAIMove(board, turnCount);
                 if (move == 0)
                 {
-                    move = LevelThreeMove(board, turnCount);
+                    move = BlockWinningPlayerMove(board, turnCount);
                 }
                 if (move == 0)
                 {
-                    move = LevelFourMove(board);
+                    move = RandomAIMove(board);
                 }
-                if (move == 0)
-                {
-                    move = LevelOneMove();
-                }
-            break;
+                break;
             case 4:
 
-                move = LevelTwoMove(board, turnCount);
+                move = WinningAIMove(board, turnCount);
                 if (move == 0)
                 {
-                    move = LevelThreeMove(board, turnCount);
+                    move = BlockWinningPlayerMove(board, turnCount);
                 }
                 if (move == 0)
                 {
-                    move = LevelOneMove();
+                    move = RandomNotHelpPlayerMove(board);
+                }
+                if (move == 0)
+                {
+                    move = RandomAIMove(board);
                 }
                 break;
         }
         return move;
     }
 
-    private int LevelOneMove()
+    private int RandomAIMove(char[][] board)
     {
-        Random random = new Random();
-        return (random.nextInt(6) + 1);
+        Integer[] columnArray =
+        {
+            0, 1, 2, 3, 4, 5, 6
+        };
+        Collections.shuffle(Arrays.asList(columnArray));
+        for (int x = 0; x < columnArray.length; x++)
+        {
+            for (int row = board.length - 1; row >= 0; row--)
+            {
+                if (board[row][columnArray[x]] == Marker.EMPTY.GetMarker())
+                {
+                    return columnArray[x] + 1;
+                }
+            }
+        }
+        return 0;
     }
 
-    private int LevelTwoMove(char[][] board, int turnCount)
+    private int WinningAIMove(char[][] board, int turnCount)
     {
         int move = 0;
         if (turnCount < 6)
@@ -178,10 +191,10 @@ public class AI
         return move;
     }
 
-    private int LevelThreeMove(char[][] board, int turnCount)
+    private int BlockWinningPlayerMove(char[][] board, int turnCount)
     {
         int move = 0;
-        if (turnCount < 5)
+        if (turnCount < 4)
         {
             return move;
         }
@@ -260,7 +273,7 @@ public class AI
         return move;
     }
 
-    public int LevelFourMove(char[][] board)
+    public int RandomNotHelpPlayerMove(char[][] board)
     {
         char[][] testBoard = new char[board.length][board[0].length];
         for (int x = 0; x < board.length; x++)
@@ -281,7 +294,7 @@ public class AI
                     if (row == testBoard.length - 1 || testBoard[row + 1][columnArray[x]] != Marker.EMPTY.GetMarker())
                     {
                         testBoard[row][columnArray[x]] = this.aiMarker.GetMarker();
-                        if (0 == LevelThreeMove(testBoard, 10))
+                        if (0 == BlockWinningPlayerMove(testBoard, 10))
                         {
                             return columnArray[x] + 1;
                         } else
@@ -297,14 +310,23 @@ public class AI
 
     public int CheckUp(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < countNeeded - 1; x++)
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
         {
             if (board[row - x][column] != marker)
             {
-                return 0;
+               
+                if (skipped == 0 && board[row - x][column] == Marker.EMPTY.GetMarker() && board[(row - x) + 1][column] != Marker.EMPTY.GetMarker())
+                {
+                    skipped = column+ 1;
+                } else
+                {
+                    return 0;
+                }
+            
             }
         }
-        return column + 1;
+        return skipped;
     }
 
     public int CheckUpLeft(char[][] board, int row, int column, char marker, int countNeeded)
@@ -333,15 +355,9 @@ public class AI
         {
             if (board[row - x][column + x] != marker)
             {
-                if (skipped == 0 && board[row - x][column + x] == Marker.EMPTY.GetMarker())
+                if (skipped == 0 && board[row - x][column + x] == Marker.EMPTY.GetMarker() && board[(row - x) + 1][column + x] != Marker.EMPTY.GetMarker())
                 {
-                    if (board[(row - x) + 1][column + x] != Marker.EMPTY.GetMarker())
-                    {
-                        skipped = column + x + 1;
-                    } else
-                    {
-                        return 0;
-                    }
+                    skipped = column + x + 1;
                 } else
                 {
                     return 0;
@@ -353,14 +369,21 @@ public class AI
 
     public int CheckDown(char[][] board, int row, int column, char marker, int countNeeded)
     {
-        for (int x = 1; x < countNeeded - 1; x++)
+        int skipped = 0;
+        for (int x = 1; x < countNeeded; x++)
         {
             if (board[row + x][column] != marker)
             {
-                return 0;
+                 if (skipped == 0 && board[row + x][column] == Marker.EMPTY.GetMarker() && board[(row + x) + 1][column] != Marker.EMPTY.GetMarker())
+                {
+                    skipped = column + 1;
+                } else
+                {
+                    return 0;
+                }
             }
         }
-        return column + 1;
+        return skipped;
     }
 
     public int CheckDownLeft(char[][] board, int row, int column, char marker, int countNeeded)
