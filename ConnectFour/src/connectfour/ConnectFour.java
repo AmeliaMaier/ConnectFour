@@ -14,13 +14,11 @@ import java.util.Scanner;
  */
 public class ConnectFour
 {
-
     char[][] gameBoard;
     Logic logic;
     AI ai;
     Scanner input;
     boolean hotSeat;
-
     /**
      * @param args the command line arguments
      */
