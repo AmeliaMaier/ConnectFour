@@ -40,12 +40,15 @@ public class JFrameConnectFour extends javax.swing.JFrame
         this.logic = new Logic();
         this.gameBoard = logic.GetBoard();
         this.hotSeat = true;
+        this.jLabelPlayer1Marker.setVisible(false);
         this.jLabelPlayer2MarkerChoice.setVisible(false);
         this.jComboBoxPlayer2MarkerChoice.setVisible(false);
+        this.jLabelPlayer2Marker.setVisible(false);
         this.jLabelDifficultyChoice.setVisible(false);
         this.jComboBoxDifficutlyChoice.setVisible(false);
+        this.jLabelAIAnswer.setVisible(false);
+        this.jComboBoxAIChoice.setVisible(false);
         this.jLabelAIChoice.setVisible(false);
-        this.jToggleButtonAIChoice.setVisible(false);
         this.jComboBoxPlayer1MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(Marker.GetOptions()));
     }
 
@@ -64,10 +67,13 @@ public class JFrameConnectFour extends javax.swing.JFrame
         jLabelPlayer1MarkerChoice = new javax.swing.JLabel();
         jLabelPlayer2MarkerChoice = new javax.swing.JLabel();
         jComboBoxPlayer2MarkerChoice = new javax.swing.JComboBox();
-        jToggleButtonAIChoice = new javax.swing.JToggleButton();
-        jLabelAIChoice = new javax.swing.JLabel();
         jComboBoxDifficutlyChoice = new javax.swing.JComboBox();
         jLabelDifficultyChoice = new javax.swing.JLabel();
+        jLabelPlayer1Marker = new javax.swing.JLabel();
+        jComboBoxAIChoice = new javax.swing.JComboBox();
+        jLabelPlayer2Marker = new javax.swing.JLabel();
+        jLabelAIAnswer = new javax.swing.JLabel();
+        jLabelAIChoice = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,70 +98,78 @@ public class JFrameConnectFour extends javax.swing.JFrame
 
         jComboBoxPlayer2MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jToggleButtonAIChoice.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
-        jToggleButtonAIChoice.setText("Yes");
-
-        jLabelAIChoice.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
-        jLabelAIChoice.setText("Make the computer Player 2");
-
         jComboBoxDifficutlyChoice.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
         jComboBoxDifficutlyChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabelDifficultyChoice.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
-        jLabelDifficultyChoice.setText("Dificulty");
+        jLabelDifficultyChoice.setText("Difficulty");
+
+        jLabelPlayer1Marker.setText("jLabel1");
+
+        jComboBoxAIChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabelPlayer2Marker.setText("jLabel2");
+
+        jLabelAIAnswer.setText("jLabel3");
+
+        jLabelAIChoice.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
+        jLabelAIChoice.setText("Set Player 2 to AI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(117, 117, 117)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxDifficutlyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDifficultyChoice)
+                    .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelPlayer2MarkerChoice))
-                        .addGap(87, 87, 87)
+                            .addComponent(jLabelPlayer2MarkerChoice)
+                            .addComponent(jLabelAIChoice)
+                            .addComponent(jLabelPlayer1MarkerChoice))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDifficultyChoice)
-                            .addComponent(jComboBoxDifficutlyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelPlayer1MarkerChoice)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelAIChoice))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButtonAIChoice)
-                        .addGap(87, 87, 87)))
-                .addGap(32, 32, 32))
+                            .addComponent(jLabelPlayer1Marker)
+                            .addComponent(jLabelAIAnswer)
+                            .addComponent(jLabelPlayer2Marker))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(125, Short.MAX_VALUE)
                 .addComponent(jLabelConnectFourTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelConnectFourTitle)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPlayer1MarkerChoice)
-                    .addComponent(jLabelAIChoice))
+                .addComponent(jLabelConnectFourTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButtonAIChoice))
-                .addGap(29, 29, 29)
+                    .addComponent(jLabelPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPlayer1Marker))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPlayer2MarkerChoice)
-                    .addComponent(jLabelDifficultyChoice))
+                    .addComponent(jLabelPlayer2Marker))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxDifficutlyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                    .addComponent(jLabelAIChoice)
+                    .addComponent(jLabelAIAnswer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelDifficultyChoice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxDifficutlyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,6 +178,17 @@ public class JFrameConnectFour extends javax.swing.JFrame
     private void jComboBoxPlayer1MarkerChoiceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBoxPlayer1MarkerChoiceActionPerformed
     {//GEN-HEADEREND:event_jComboBoxPlayer1MarkerChoiceActionPerformed
         // TODO add your handling code here:
+        int player1Marker = this.jComboBoxPlayer1MarkerChoice.getSelectedIndex();
+       if(player1Marker >= 0 && player1Marker < Marker.GetOptions().length)
+       {
+           this.logic.SetMarkerPlayer1(player1Marker);
+           this.jComboBoxPlayer1MarkerChoice.setVisible(false);
+           this.jLabelPlayer1Marker.setText(this.logic.GetPlayer1() + "");
+           this.jLabelPlayer1Marker.setVisible(true);
+           this.jLabelPlayer2MarkerChoice.setVisible(true);
+           this.jComboBoxPlayer2MarkerChoice.setVisible(true);
+           this.jComboBoxPlayer2MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(Marker.GetOptions(player1Marker)));
+       }
     }//GEN-LAST:event_jComboBoxPlayer1MarkerChoiceActionPerformed
 
     /**
@@ -212,14 +237,17 @@ public class JFrameConnectFour extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox jComboBoxAIChoice;
     private javax.swing.JComboBox jComboBoxDifficutlyChoice;
     private javax.swing.JComboBox jComboBoxPlayer1MarkerChoice;
     private javax.swing.JComboBox jComboBoxPlayer2MarkerChoice;
+    private javax.swing.JLabel jLabelAIAnswer;
     private javax.swing.JLabel jLabelAIChoice;
     private javax.swing.JLabel jLabelConnectFourTitle;
     private javax.swing.JLabel jLabelDifficultyChoice;
+    private javax.swing.JLabel jLabelPlayer1Marker;
     private javax.swing.JLabel jLabelPlayer1MarkerChoice;
+    private javax.swing.JLabel jLabelPlayer2Marker;
     private javax.swing.JLabel jLabelPlayer2MarkerChoice;
-    private javax.swing.JToggleButton jToggleButtonAIChoice;
     // End of variables declaration//GEN-END:variables
 }

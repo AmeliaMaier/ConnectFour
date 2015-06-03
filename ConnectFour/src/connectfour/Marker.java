@@ -5,6 +5,10 @@
  */
 package connectfour;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Lia
@@ -33,6 +37,15 @@ public enum Marker
     public static String[] GetOptions()
     {
         String[] options = {"\u25D9", "\u2612", "\u2600", "\u24CD", "\u25CE"};
+        return options; 
+    }
+    
+    public static String[] GetOptions(int remove)
+    {
+        String[] options = {"\u25D9", "\u2612", "\u2600", "\u24CD", "\u25CE"};
+        List<String> list = new ArrayList<>(Arrays.asList(options));
+        list.remove(remove);
+        options = list.toArray(new String[0]);        
         return options; 
     }
 }

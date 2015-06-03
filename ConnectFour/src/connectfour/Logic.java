@@ -46,41 +46,46 @@ public class Logic
         return this.turnCount;
     }
 
-    public void SetMarkers(int player1, int player2)
+    public void SetMarkerPlayer1(int player1)
     {
         switch (player1)
         {
-            case 1:
+            case 0:
                 this.player1 = Marker.MARKER1;
                 break;
-            case 2:
+            case 1:
                 this.player1 = Marker.MARKER2;
                 break;
-            case 3:
+            case 2:
                 this.player1 = Marker.MARKER3;
                 break;
-            case 4:
+            case 3:
                 this.player1 = Marker.MARKER4;
                 break;
-            case 5:
+            case 4:
                 this.player1 = Marker.MARKER5;
                 break;
         }
+    }
+
+    public void SetMarkerPlayer2(int player2)
+    {
+
         switch (player2)
         {
-            case 1:
+            case 0:
                 this.player2 = Marker.MARKER1;
                 break;
-            case 2:
+            case 1:
                 this.player2 = Marker.MARKER2;
                 break;
-            case 3:
+            case 2:
                 this.player2 = Marker.MARKER3;
                 break;
-            case 4:
+            case 3:
                 this.player2 = Marker.MARKER4;
                 break;
-            case 5:
+            case 4:
                 this.player2 = Marker.MARKER5;
                 break;
         }
@@ -101,6 +106,7 @@ public class Logic
         ai.SetMarkers(player1, player2);
         return ai.GetAIMove(this.board, this.turnCount);
     }
+
     public boolean PlaceMarker(int move)
     {
         char marker;
@@ -129,7 +135,8 @@ public class Logic
      * only 42 markers can fit on the board
      *
      * otherwise returns false because there are still open spaces
-     * @return 
+     *
+     * @return
      */
     public boolean BoardFull()
     {
@@ -295,7 +302,7 @@ public class Logic
         }
         return true;
     }
-    
+
     public boolean CheckLeft(int row, int column, char possibleWinner)
     {
         for (int x = 1; x < 4; x++)
@@ -307,7 +314,7 @@ public class Logic
         }
         return true;
     }
-    
+
     public boolean CheckRight(int row, int column, char possibleWinner)
     {
         for (int x = 1; x < 4; x++)
