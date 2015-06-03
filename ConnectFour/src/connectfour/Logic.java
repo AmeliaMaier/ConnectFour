@@ -16,6 +16,7 @@ public class Logic
     private Marker player1;
     private Marker player2;
     private int turnCount;
+    private String[] markerOptions;
 
     public Logic()
     {
@@ -46,23 +47,29 @@ public class Logic
         return this.turnCount;
     }
 
+    public String [] SetMarkerOptions(String[] markerOptions)
+    {
+        this.markerOptions = markerOptions;
+        return markerOptions;
+    }
+
     public void SetMarkerPlayer1(int player1)
     {
-        switch (player1)
+        switch (this.markerOptions[player1].charAt(0))
         {
-            case 0:
+            case '\u25D9':
                 this.player1 = Marker.MARKER1;
                 break;
-            case 1:
+            case '\u2612':
                 this.player1 = Marker.MARKER2;
                 break;
-            case 2:
+            case '\u2600':
                 this.player1 = Marker.MARKER3;
                 break;
-            case 3:
+            case '\u24CD':
                 this.player1 = Marker.MARKER4;
                 break;
-            case 4:
+            case '\u25CE':
                 this.player1 = Marker.MARKER5;
                 break;
         }
@@ -70,27 +77,31 @@ public class Logic
 
     public void SetMarkerPlayer2(int player2)
     {
-
-        switch (player2)
+        switch (this.markerOptions[player2].charAt(0))
         {
-            case 0:
+            case '\u25D9':
                 this.player2 = Marker.MARKER1;
                 break;
-            case 1:
+            case '\u2612':
                 this.player2 = Marker.MARKER2;
                 break;
-            case 2:
+            case '\u2600':
                 this.player2 = Marker.MARKER3;
                 break;
-            case 3:
+            case '\u24CD':
                 this.player2 = Marker.MARKER4;
                 break;
-            case 4:
+            case '\u25CE':
                 this.player2 = Marker.MARKER5;
                 break;
         }
     }
 
+    public String [] GetAIOptions()
+    {
+        String[] options = {"Yes","No"};
+        return options;
+    }
     public char GetPlayer1()
     {
         return player1.GetMarker();

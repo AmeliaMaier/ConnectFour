@@ -21,16 +21,16 @@ public class AI
         this.level = level;
         switch (level)
         {
-            case 1:
+            case 0:
                 levelID = AILevel.Level1;
                 break;
-            case 2:
+            case 1:
                 levelID = AILevel.Level2;
                 break;
-            case 3:
+            case 2:
                 levelID = AILevel.Level3;
                 break;
-            case 4:
+            case 3:
                 levelID = AILevel.Level4;
                 break;
         }

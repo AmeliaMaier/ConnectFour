@@ -17,7 +17,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
     char[][] gameBoard;
     Logic logic;
     AI ai;
-    boolean hotSeat;
+    boolean useAI;
 
     /**
      * Creates new form JFrameConnectFour
@@ -39,17 +39,27 @@ public class JFrameConnectFour extends javax.swing.JFrame
     {
         this.logic = new Logic();
         this.gameBoard = logic.GetBoard();
-        this.hotSeat = true;
+        this.useAI = true;
         this.jLabelPlayer1Marker.setVisible(false);
         this.jLabelPlayer2MarkerChoice.setVisible(false);
         this.jComboBoxPlayer2MarkerChoice.setVisible(false);
         this.jLabelPlayer2Marker.setVisible(false);
         this.jLabelDifficultyChoice.setVisible(false);
-        this.jComboBoxDifficutlyChoice.setVisible(false);
+        this.jComboBoxDifficultyChoice.setVisible(false);
         this.jLabelAIAnswer.setVisible(false);
         this.jComboBoxAIChoice.setVisible(false);
         this.jLabelAIChoice.setVisible(false);
-        this.jComboBoxPlayer1MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(Marker.GetOptions()));
+        this.jButtonColumn1.setVisible(false);
+        this.jButtonColumn2.setVisible(false);
+        this.jButtonColumn3.setVisible(false);
+        this.jButtonColumn4.setVisible(false);
+        this.jButtonColumn5.setVisible(false);
+        this.jButtonColumn6.setVisible(false);
+        this.jButtonColumn7.setVisible(false);
+        this.jLabelInstructions.setVisible(false);
+        this.jLabelInstructions.setText("");
+        this.jTextAreaGameBoard.setVisible(false);
+        this.jComboBoxPlayer1MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(this.logic.SetMarkerOptions(Marker.GetOptions())));
     }
 
     /**
@@ -63,23 +73,39 @@ public class JFrameConnectFour extends javax.swing.JFrame
     {
 
         jLabelConnectFourTitle = new javax.swing.JLabel();
+        jLabelAIChoice = new javax.swing.JLabel();
+        jLabelAIAnswer = new javax.swing.JLabel();
         jComboBoxPlayer1MarkerChoice = new javax.swing.JComboBox();
         jLabelPlayer1MarkerChoice = new javax.swing.JLabel();
         jLabelPlayer2MarkerChoice = new javax.swing.JLabel();
         jComboBoxPlayer2MarkerChoice = new javax.swing.JComboBox();
-        jComboBoxDifficutlyChoice = new javax.swing.JComboBox();
+        jComboBoxDifficultyChoice = new javax.swing.JComboBox();
         jLabelDifficultyChoice = new javax.swing.JLabel();
         jLabelPlayer1Marker = new javax.swing.JLabel();
         jComboBoxAIChoice = new javax.swing.JComboBox();
         jLabelPlayer2Marker = new javax.swing.JLabel();
-        jLabelAIAnswer = new javax.swing.JLabel();
-        jLabelAIChoice = new javax.swing.JLabel();
+        jButtonColumn1 = new javax.swing.JButton();
+        jButtonColumn2 = new javax.swing.JButton();
+        jButtonColumn3 = new javax.swing.JButton();
+        jButtonColumn4 = new javax.swing.JButton();
+        jButtonColumn5 = new javax.swing.JButton();
+        jButtonColumn6 = new javax.swing.JButton();
+        jButtonColumn7 = new javax.swing.JButton();
+        jLabelInstructions = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaGameBoard = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelConnectFourTitle.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         jLabelConnectFourTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelConnectFourTitle.setText("Connect Four");
+
+        jLabelAIChoice.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
+        jLabelAIChoice.setText("Set Player 2 to AI");
+
+        jLabelAIAnswer.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
+        jLabelAIAnswer.setText("Yes");
 
         jComboBoxPlayer1MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxPlayer1MarkerChoice.addActionListener(new java.awt.event.ActionListener()
@@ -97,9 +123,23 @@ public class JFrameConnectFour extends javax.swing.JFrame
         jLabelPlayer2MarkerChoice.setText("Player 2 Marker");
 
         jComboBoxPlayer2MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPlayer2MarkerChoice.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jComboBoxPlayer2MarkerChoiceActionPerformed(evt);
+            }
+        });
 
-        jComboBoxDifficutlyChoice.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
-        jComboBoxDifficutlyChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDifficultyChoice.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jComboBoxDifficultyChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDifficultyChoice.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jComboBoxDifficultyChoiceActionPerformed(evt);
+            }
+        });
 
         jLabelDifficultyChoice.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jLabelDifficultyChoice.setText("Difficulty");
@@ -107,69 +147,148 @@ public class JFrameConnectFour extends javax.swing.JFrame
         jLabelPlayer1Marker.setText("jLabel1");
 
         jComboBoxAIChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAIChoice.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jComboBoxAIChoiceActionPerformed(evt);
+            }
+        });
 
         jLabelPlayer2Marker.setText("jLabel2");
 
-        jLabelAIAnswer.setText("jLabel3");
+        jButtonColumn1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn1.setText("1");
+        jButtonColumn1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonColumn1ActionPerformed(evt);
+            }
+        });
 
-        jLabelAIChoice.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
-        jLabelAIChoice.setText("Set Player 2 to AI");
+        jButtonColumn2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn2.setText("2");
+
+        jButtonColumn3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn3.setText("3");
+
+        jButtonColumn4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn4.setText("4");
+
+        jButtonColumn5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn5.setText("5");
+        jButtonColumn5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonColumn5ActionPerformed(evt);
+            }
+        });
+
+        jButtonColumn6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn6.setText("6");
+
+        jButtonColumn7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn7.setText("7");
+
+        jLabelInstructions.setText("jLabel2");
+
+        jTextAreaGameBoard.setColumns(20);
+        jTextAreaGameBoard.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaGameBoard);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxDifficutlyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelPlayer1MarkerChoice)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabelPlayer1Marker))
+                    .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDifficultyChoice)
-                    .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxDifficultyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelPlayer2MarkerChoice)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelPlayer2Marker))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelAIChoice)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelAIAnswer))
+                    .addComponent(jLabelInstructions))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPlayer2MarkerChoice)
-                            .addComponent(jLabelAIChoice)
-                            .addComponent(jLabelPlayer1MarkerChoice))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPlayer1Marker)
-                            .addComponent(jLabelAIAnswer)
-                            .addComponent(jLabelPlayer2Marker))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
-                .addComponent(jLabelConnectFourTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                            .addComponent(jLabelConnectFourTitle)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(jButtonColumn1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonColumn2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonColumn3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonColumn4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonColumn5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonColumn6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonColumn7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelConnectFourTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addComponent(jLabelConnectFourTitle)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPlayer1Marker))
+                    .addComponent(jButtonColumn1)
+                    .addComponent(jButtonColumn2)
+                    .addComponent(jButtonColumn3)
+                    .addComponent(jButtonColumn4)
+                    .addComponent(jButtonColumn5)
+                    .addComponent(jButtonColumn6)
+                    .addComponent(jButtonColumn7)
+                    .addComponent(jLabelInstructions))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPlayer2MarkerChoice)
-                    .addComponent(jLabelPlayer2Marker))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAIChoice)
-                    .addComponent(jLabelAIAnswer))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelDifficultyChoice)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxDifficutlyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPlayer1MarkerChoice)
+                            .addComponent(jLabelPlayer1Marker))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPlayer2MarkerChoice)
+                            .addComponent(jLabelPlayer2Marker))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelAIChoice)
+                            .addComponent(jLabelAIAnswer))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelDifficultyChoice)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxDifficultyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -179,17 +298,196 @@ public class JFrameConnectFour extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jComboBoxPlayer1MarkerChoiceActionPerformed
         // TODO add your handling code here:
         int player1Marker = this.jComboBoxPlayer1MarkerChoice.getSelectedIndex();
-       if(player1Marker >= 0 && player1Marker < Marker.GetOptions().length)
-       {
-           this.logic.SetMarkerPlayer1(player1Marker);
-           this.jComboBoxPlayer1MarkerChoice.setVisible(false);
-           this.jLabelPlayer1Marker.setText(this.logic.GetPlayer1() + "");
-           this.jLabelPlayer1Marker.setVisible(true);
-           this.jLabelPlayer2MarkerChoice.setVisible(true);
-           this.jComboBoxPlayer2MarkerChoice.setVisible(true);
-           this.jComboBoxPlayer2MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(Marker.GetOptions(player1Marker)));
-       }
+        if (player1Marker != -1)
+        {
+            this.logic.SetMarkerPlayer1(player1Marker);
+            this.jComboBoxPlayer1MarkerChoice.setVisible(false);
+            this.jLabelPlayer1Marker.setText(this.logic.GetPlayer1() + "");
+            this.jLabelPlayer1Marker.setVisible(true);
+            this.jLabelPlayer2MarkerChoice.setVisible(true);
+            this.jComboBoxPlayer2MarkerChoice.setVisible(true);
+            this.jComboBoxPlayer2MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(this.logic.SetMarkerOptions(Marker.GetOptions(player1Marker))));
+        }
     }//GEN-LAST:event_jComboBoxPlayer1MarkerChoiceActionPerformed
+
+    private void jComboBoxPlayer2MarkerChoiceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBoxPlayer2MarkerChoiceActionPerformed
+    {//GEN-HEADEREND:event_jComboBoxPlayer2MarkerChoiceActionPerformed
+        // TODO add your handling code here:
+        int player2Marker = this.jComboBoxPlayer2MarkerChoice.getSelectedIndex();
+        if (player2Marker != -1)
+        {
+            this.logic.SetMarkerPlayer2(player2Marker);
+            this.jComboBoxPlayer2MarkerChoice.setVisible(false);
+            this.jLabelPlayer2Marker.setText(this.logic.GetPlayer2() + "");
+            this.jLabelPlayer2Marker.setVisible(true);
+            this.jLabelAIChoice.setVisible(true);
+            this.jComboBoxAIChoice.setVisible(true);
+            this.jComboBoxAIChoice.setModel(new javax.swing.DefaultComboBoxModel(this.logic.GetAIOptions()));
+        }
+    }//GEN-LAST:event_jComboBoxPlayer2MarkerChoiceActionPerformed
+
+    private void jComboBoxAIChoiceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBoxAIChoiceActionPerformed
+    {//GEN-HEADEREND:event_jComboBoxAIChoiceActionPerformed
+        // TODO add your handling code here:
+        int ai = this.jComboBoxAIChoice.getSelectedIndex();
+        if (ai == 0)
+        {
+            //player2 is run by AI
+            this.jComboBoxAIChoice.setVisible(false);
+            this.jLabelAIAnswer.setVisible(true);
+            this.jLabelDifficultyChoice.setVisible(true);
+            this.jComboBoxDifficultyChoice.setVisible(true);
+            this.jComboBoxDifficultyChoice.setModel(new javax.swing.DefaultComboBoxModel(AILevel.GetOptions()));
+            this.useAI = true;
+        } else if (ai != -1)
+        {
+            //player2 is hot seat
+            this.useAI = false;
+        }
+    }//GEN-LAST:event_jComboBoxAIChoiceActionPerformed
+
+    private void jButtonColumn1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonColumn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonColumn1ActionPerformed
+
+    private void jButtonColumn5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonColumn5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonColumn5ActionPerformed
+
+    private void jComboBoxDifficultyChoiceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBoxDifficultyChoiceActionPerformed
+    {//GEN-HEADEREND:event_jComboBoxDifficultyChoiceActionPerformed
+        // TODO add your handling code here:
+        int difficulty = this.jComboBoxAIChoice.getSelectedIndex();
+        this.ai = new AI(difficulty);
+        this.jLabelPlayer1Marker.setVisible(false);
+        this.jLabelPlayer1MarkerChoice.setVisible(false);
+        this.jLabelPlayer2MarkerChoice.setVisible(false);
+        this.jLabelPlayer2Marker.setVisible(false);
+        this.jLabelDifficultyChoice.setVisible(false);
+        this.jComboBoxDifficultyChoice.setVisible(false);
+        this.jLabelAIAnswer.setVisible(false);
+        this.jLabelAIChoice.setVisible(false);
+        this.jButtonColumn1.setVisible(true);
+        this.jButtonColumn2.setVisible(true);
+        this.jButtonColumn3.setVisible(true);
+        this.jButtonColumn4.setVisible(true);
+        this.jButtonColumn5.setVisible(true);
+        this.jButtonColumn6.setVisible(true);
+        this.jButtonColumn7.setVisible(true);
+        this.jLabelInstructions.setVisible(true);
+        this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        this.jTextAreaGameBoard.setVisible(true);
+        this.jTextAreaGameBoard.setText(OutputBoard());
+    }//GEN-LAST:event_jComboBoxDifficultyChoiceActionPerformed
+
+    
+    private String OutputBoard()
+    {
+        int arrayRow = 0;
+        int arrayColumn = 0;
+        String board = "";
+
+        for (int row = 0; row <= 13; row++)
+        {
+            for (int column = 0; column <= 14; column++)
+            {
+                if (row == 0)
+                {
+                    if (column == 14)
+                    {
+                        board.concat(" \n");
+                    } else if (column % 2 == 0)
+                    {
+                        board.concat("  ");
+                    } else
+                    {
+                        board.concat((column / 2 + column % 2) + "");
+                    }
+                } else if (row == 1)
+                {
+                    if (column == 0)
+                    {
+                        board.concat("\u250f");
+                        //upper left curve \u250f
+                    } else if (column == 14)
+                    {
+                        board.concat("\u2513\n");
+                        //upper right curve \u2513
+                    } else if (column % 2 == 1)
+                    {
+                        board.concat("\u2501");
+                        //straight across \u2501
+                    } else
+                    {
+                        board.concat("\u2533");
+                        //across and down \u2533
+                    }
+                } else if (row == 13)
+                {
+                    if (column == 0)
+                    {
+                        board.concat("\u2517");
+                        //bottom left curve \u2517
+                    } else if (column == 14)
+                    {
+                        board.concat("\u251b\n");
+                        //bottom right curve \u251b
+                    } else if (column % 2 == 1)
+                    {
+                        board.concat("\u2501");
+                        //straight across \u2501
+                    } else
+                    {
+                        board.concat("\u253b");
+                        //across and up \u253b
+                    }
+                } else if (row % 2 == 1)
+                {
+                    if (column == 0)
+                    {
+                        board.concat("\u2523");
+                        //up and to right \u2523
+                    } else if (column == 14)
+                    {
+                        board.concat("\u252b\n");
+                        //up and to left \u252b
+                    } else if (column % 2 == 1)
+                    {
+                        board.concat("\u2501");
+                        //straight across \u2501
+                    } else
+                    {
+                        board.concat("\u254B");
+                        //cross \u254b
+                    }
+
+                } else
+                {
+                    if (column == 14)
+                    {
+                        board.concat("\u2503\n");
+                        //straight up \u2503
+                    } else if (column % 2 == 0)
+                    {
+                        board.concat("\u2503");
+                        //straight up \u2503
+                    } else
+                    {
+                        board.concat((this.gameBoard[arrayRow][arrayColumn]) + "");
+                        arrayColumn++;
+                    }
+                }
+            }
+            if (arrayColumn != 0)
+            {
+                arrayColumn = 0;
+                arrayRow++;
+            }
+        }
+        return board;
+    }
 
     /**
      * @param args the command line arguments
@@ -237,17 +535,27 @@ public class JFrameConnectFour extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonColumn1;
+    private javax.swing.JButton jButtonColumn2;
+    private javax.swing.JButton jButtonColumn3;
+    private javax.swing.JButton jButtonColumn4;
+    private javax.swing.JButton jButtonColumn5;
+    private javax.swing.JButton jButtonColumn6;
+    private javax.swing.JButton jButtonColumn7;
     private javax.swing.JComboBox jComboBoxAIChoice;
-    private javax.swing.JComboBox jComboBoxDifficutlyChoice;
+    private javax.swing.JComboBox jComboBoxDifficultyChoice;
     private javax.swing.JComboBox jComboBoxPlayer1MarkerChoice;
     private javax.swing.JComboBox jComboBoxPlayer2MarkerChoice;
     private javax.swing.JLabel jLabelAIAnswer;
     private javax.swing.JLabel jLabelAIChoice;
     private javax.swing.JLabel jLabelConnectFourTitle;
     private javax.swing.JLabel jLabelDifficultyChoice;
+    private javax.swing.JLabel jLabelInstructions;
     private javax.swing.JLabel jLabelPlayer1Marker;
     private javax.swing.JLabel jLabelPlayer1MarkerChoice;
     private javax.swing.JLabel jLabelPlayer2Marker;
     private javax.swing.JLabel jLabelPlayer2MarkerChoice;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaGameBoard;
     // End of variables declaration//GEN-END:variables
 }
