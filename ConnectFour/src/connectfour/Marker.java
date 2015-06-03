@@ -30,9 +30,9 @@ public enum Marker
         return this.marker;
     }
     
-    public static char[] GetOptions()
+    public static String[] GetOptions()
     {
-        char[] options = {'\u25D9', '\u2612', '\u2600', '\u24CD', '\u25CE'};
+        String[] options = {"\u25D9", "\u2612", "\u2600", "\u24CD", "\u25CE"};
         return options; 
     }
 }

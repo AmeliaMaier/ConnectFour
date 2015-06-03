@@ -35,7 +35,7 @@ public class ConnectFour
         do
         {
             Initialize();
-            GetMarkerSelection();
+      //      GetMarkerSelection();
             HotSeatOrAI();
             if (!hotSeat)
             {
@@ -65,7 +65,7 @@ public class ConnectFour
      * Gets user to select the marker for player1 and player2 passes them to
      * Logic
      */
-    private void GetMarkerSelection()
+    /*private void GetMarkerSelection()
     {
         int player1 = 0;
         int player2 = 0;
@@ -116,7 +116,7 @@ public class ConnectFour
             }
         } while (player1 == 0 || player2 == 0);
         logic.SetMarkers(player1, player2);
-    }
+    }*/
 
     private void HotSeatOrAI()
     {
