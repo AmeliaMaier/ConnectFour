@@ -58,7 +58,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
         this.jButtonColumn7.setVisible(false);
         this.jLabelInstructions.setVisible(false);
         this.jLabelInstructions.setText("");
-        this.jTextAreaGameBoard.setVisible(false);
+        this.jLabelGameBoard.setVisible(false);
         this.jComboBoxPlayer1MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(this.logic.SetMarkerOptions(Marker.GetOptions())));
     }
 
@@ -92,8 +92,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
         jButtonColumn6 = new javax.swing.JButton();
         jButtonColumn7 = new javax.swing.JButton();
         jLabelInstructions = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaGameBoard = new javax.swing.JTextArea();
+        jLabelGameBoard = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,9 +193,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
 
         jLabelInstructions.setText("jLabel2");
 
-        jTextAreaGameBoard.setColumns(20);
-        jTextAreaGameBoard.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaGameBoard);
+        jLabelGameBoard.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,7 +242,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
                         .addComponent(jButtonColumn7))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelGameBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -263,9 +260,9 @@ public class JFrameConnectFour extends javax.swing.JFrame
                     .addComponent(jButtonColumn6)
                     .addComponent(jButtonColumn7)
                     .addComponent(jLabelInstructions))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelPlayer1MarkerChoice)
                             .addComponent(jLabelPlayer1Marker))
@@ -287,8 +284,10 @@ public class JFrameConnectFour extends javax.swing.JFrame
                         .addComponent(jLabelDifficultyChoice)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxDifficultyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabelGameBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
@@ -378,8 +377,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         this.jButtonColumn7.setVisible(true);
         this.jLabelInstructions.setVisible(true);
         this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
-        this.jTextAreaGameBoard.setVisible(true);
-        this.jTextAreaGameBoard.setText(OutputBoard());
+        this.jLabelGameBoard.setVisible(true);
+        this.jLabelGameBoard.setText(OutputBoard());
     }//GEN-LAST:event_jComboBoxDifficultyChoiceActionPerformed
 
     
@@ -387,79 +386,67 @@ public class JFrameConnectFour extends javax.swing.JFrame
     {
         int arrayRow = 0;
         int arrayColumn = 0;
-        String board = "";
+        String board = "<html>";
 
         for (int row = 0; row <= 13; row++)
         {
-            for (int column = 0; column <= 14; column++)
+            for (int column = 0; column <= 13; column++)
             {
                 if (row == 0)
                 {
-                    if (column == 14)
-                    {
-                        board.concat(" \n");
-                    } else if (column % 2 == 0)
-                    {
-                        board.concat("  ");
-                    } else
-                    {
-                        board.concat((column / 2 + column % 2) + "");
-                    }
-                } else if (row == 1)
-                {
                     if (column == 0)
                     {
-                        board.concat("\u250f");
+                        board += "\u250f";
                         //upper left curve \u250f
                     } else if (column == 14)
                     {
-                        board.concat("\u2513\n");
+                        board += "\u2513<br />";
                         //upper right curve \u2513
                     } else if (column % 2 == 1)
                     {
-                        board.concat("\u2501");
+                        board += "\u2501";
                         //straight across \u2501
                     } else
                     {
-                        board.concat("\u2533");
+                        board += "\u2533";
                         //across and down \u2533
                     }
                 } else if (row == 13)
                 {
                     if (column == 0)
                     {
-                        board.concat("\u2517");
+                        board += "\u2517";
                         //bottom left curve \u2517
                     } else if (column == 14)
                     {
-                        board.concat("\u251b\n");
+                        board += "\u251b<br />";
                         //bottom right curve \u251b
                     } else if (column % 2 == 1)
                     {
-                        board.concat("\u2501");
+                        board += "\u2501";
                         //straight across \u2501
                     } else
                     {
-                        board.concat("\u253b");
+                        board += "\u253b";
                         //across and up \u253b
                     }
                 } else if (row % 2 == 1)
                 {
                     if (column == 0)
                     {
-                        board.concat("\u2523");
+                        board += "\u2523";
                         //up and to right \u2523
                     } else if (column == 14)
                     {
-                        board.concat("\u252b\n");
+                        board += "\u252b<br />";
                         //up and to left \u252b
                     } else if (column % 2 == 1)
                     {
-                        board.concat("\u2501");
+                        board += "\u2501";
                         //straight across \u2501
                     } else
                     {
-                        board.concat("\u254B");
+                        board += "\u254B";
                         //cross \u254b
                     }
 
@@ -467,15 +454,15 @@ public class JFrameConnectFour extends javax.swing.JFrame
                 {
                     if (column == 14)
                     {
-                        board.concat("\u2503\n");
+                        board += "\u2503<br />";
                         //straight up \u2503
                     } else if (column % 2 == 0)
                     {
-                        board.concat("\u2503");
+                        board += "\u2503";
                         //straight up \u2503
                     } else
                     {
-                        board.concat((this.gameBoard[arrayRow][arrayColumn]) + "");
+                        board += this.gameBoard[arrayRow][arrayColumn];
                         arrayColumn++;
                     }
                 }
@@ -486,6 +473,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
                 arrayRow++;
             }
         }
+        board += "</html>";
         return board;
     }
 
@@ -550,12 +538,11 @@ public class JFrameConnectFour extends javax.swing.JFrame
     private javax.swing.JLabel jLabelAIChoice;
     private javax.swing.JLabel jLabelConnectFourTitle;
     private javax.swing.JLabel jLabelDifficultyChoice;
+    private javax.swing.JLabel jLabelGameBoard;
     private javax.swing.JLabel jLabelInstructions;
     private javax.swing.JLabel jLabelPlayer1Marker;
     private javax.swing.JLabel jLabelPlayer1MarkerChoice;
     private javax.swing.JLabel jLabelPlayer2Marker;
     private javax.swing.JLabel jLabelPlayer2MarkerChoice;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaGameBoard;
     // End of variables declaration//GEN-END:variables
 }
