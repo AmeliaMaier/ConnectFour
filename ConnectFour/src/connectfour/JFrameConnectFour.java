@@ -27,13 +27,6 @@ public class JFrameConnectFour extends javax.swing.JFrame
     {
         initComponents();
         Initialize();
-        /*    HotSeatOrAI();
-         if (!hotSeat)
-         {
-         LevelSelection();
-         }
-         RunOneGame();*/
-
     }
 
     private void Initialize()
@@ -42,6 +35,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         this.logic = new Logic();
         this.gameBoard = logic.GetBoard();
         this.useAI = true;
+        this.jLabelPlayer1MarkerChoice.setVisible(true);
+        this.jComboBoxPlayer1MarkerChoice.setVisible(true);
         this.jLabelPlayer1Marker.setVisible(false);
         this.jLabelPlayer2MarkerChoice.setVisible(false);
         this.jComboBoxPlayer2MarkerChoice.setVisible(false);
@@ -987,8 +982,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else
         {
             this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+            GeneralMove();
         }
-        GeneralMove();
     }
 
     private void Column2Move()
@@ -999,8 +994,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else
         {
             this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+            GeneralMove();
         }
-        GeneralMove();
     }
 
     private void Column3Move()
@@ -1011,8 +1006,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else
         {
             this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+            GeneralMove();
         }
-        GeneralMove();
     }
 
     private void Column4Move()
@@ -1023,8 +1018,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else
         {
             this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+            GeneralMove();
         }
-        GeneralMove();
     }
 
     private void Column5Move()
@@ -1035,8 +1030,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else
         {
             this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+            GeneralMove();
         }
-        GeneralMove();
     }
 
     private void Column6Move()
@@ -1047,8 +1042,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else
         {
             this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+            GeneralMove();
         }
-        GeneralMove();
     }
 
     private void Column7Move()
@@ -1059,8 +1054,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else
         {
             this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+            GeneralMove();
         }
-        GeneralMove();
     }
 
     private void GeneralMove()
@@ -1087,57 +1082,28 @@ public class JFrameConnectFour extends javax.swing.JFrame
         }
         OutputBoard();
     }
-    
+
     private void WinMessage(int winner)
     {
-        this.jLabelPlayer1Marker.setVisible(false);
-        this.jLabelPlayer1MarkerChoice.setVisible(false);
-        this.jLabelPlayer2MarkerChoice.setVisible(false);
-        this.jComboBoxPlayer2MarkerChoice.setVisible(false);
-        this.jLabelPlayer2Marker.setVisible(false);
-        this.jLabelDifficultyChoice.setVisible(false);
-        this.jLabelDifficultyAnswer.setVisible(false);
-        this.jComboBoxDifficultyChoice.setVisible(false);
-        this.jLabelAIAnswer.setVisible(false);
-        this.jComboBoxAIChoice.setVisible(false);
-        this.jComboBoxPlayer1MarkerChoice.setVisible(false);
         OutputBoard();
-        this.jLabelInstructions.setText("Congrats. Player "+winner+" Wins.");   
+        JOptionPane.showMessageDialog(this, "Congrats. Player " + winner + " Wins.");
+        Initialize();
     }
-    
+
     private void TieMessage()
     {
-        this.jLabelPlayer1Marker.setVisible(false);
-        this.jLabelPlayer1MarkerChoice.setVisible(false);
-        this.jLabelPlayer2MarkerChoice.setVisible(false);
-        this.jComboBoxPlayer2MarkerChoice.setVisible(false);
-        this.jLabelPlayer2Marker.setVisible(false);
-        this.jLabelDifficultyChoice.setVisible(false);
-        this.jLabelDifficultyAnswer.setVisible(false);
-        this.jComboBoxDifficultyChoice.setVisible(false);
-        this.jLabelAIAnswer.setVisible(false);
-        this.jComboBoxAIChoice.setVisible(false);
-        this.jComboBoxPlayer1MarkerChoice.setVisible(false);
         OutputBoard();
-        this.jLabelInstructions.setText("This game is a tie.");  
+        JOptionPane.showMessageDialog(this, "This game is a tie.");
+        Initialize();
     }
+
     private void LooseMessage()
     {
-        this.jLabelPlayer1Marker.setVisible(false);
-        this.jLabelPlayer1MarkerChoice.setVisible(false);
-        this.jLabelPlayer2MarkerChoice.setVisible(false);
-        this.jComboBoxPlayer2MarkerChoice.setVisible(false);
-        this.jLabelPlayer2Marker.setVisible(false);
-        this.jLabelDifficultyChoice.setVisible(false);
-        this.jLabelDifficultyAnswer.setVisible(false);
-        this.jComboBoxDifficultyChoice.setVisible(false);
-        this.jLabelAIAnswer.setVisible(false);
-        this.jComboBoxAIChoice.setVisible(false);
-        this.jComboBoxPlayer1MarkerChoice.setVisible(false);
         OutputBoard();
-        this.jLabelInstructions.setText("Sorry, you lost.");  
+        JOptionPane.showMessageDialog(this, "Sorry, you lost.");
+        Initialize();
     }
-    
+
     private void jButtonColumn5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn5ActionPerformed
     {//GEN-HEADEREND:event_jButtonColumn5ActionPerformed
         // TODO add your handling code here:
