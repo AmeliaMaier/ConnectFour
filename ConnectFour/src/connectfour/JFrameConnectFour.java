@@ -5,7 +5,8 @@
  */
 package connectfour;
 
-import javax.swing.JLabel;
+import javax.swing.*;
+import javax.swing.text.html.parser.ParserDelegator;
 
 /**
  *
@@ -37,6 +38,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
 
     private void Initialize()
     {
+        ParserDelegator parseHTML = new ParserDelegator();
         this.logic = new Logic();
         this.gameBoard = logic.GetBoard();
         this.useAI = true;
@@ -45,6 +47,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
         this.jComboBoxPlayer2MarkerChoice.setVisible(false);
         this.jLabelPlayer2Marker.setVisible(false);
         this.jLabelDifficultyChoice.setVisible(false);
+        this.jLabelDifficultyAnswer.setVisible(false);
         this.jComboBoxDifficultyChoice.setVisible(false);
         this.jLabelAIAnswer.setVisible(false);
         this.jComboBoxAIChoice.setVisible(false);
@@ -58,7 +61,48 @@ public class JFrameConnectFour extends javax.swing.JFrame
         this.jButtonColumn7.setVisible(false);
         this.jLabelInstructions.setVisible(false);
         this.jLabelInstructions.setText("");
-        this.jLabelGameBoard.setVisible(false);
+        this.jButtonC0R0.setVisible(false);
+        this.jButtonC1R0.setVisible(false);
+        this.jButtonC2R0.setVisible(false);
+        this.jButtonC3R0.setVisible(false);
+        this.jButtonC4R0.setVisible(false);
+        this.jButtonC5R0.setVisible(false);
+        this.jButtonC6R0.setVisible(false);
+        this.jButtonC0R1.setVisible(false);
+        this.jButtonC1R1.setVisible(false);
+        this.jButtonC2R1.setVisible(false);
+        this.jButtonC3R1.setVisible(false);
+        this.jButtonC4R1.setVisible(false);
+        this.jButtonC5R1.setVisible(false);
+        this.jButtonC6R1.setVisible(false);
+        this.jButtonC0R2.setVisible(false);
+        this.jButtonC1R2.setVisible(false);
+        this.jButtonC2R2.setVisible(false);
+        this.jButtonC3R2.setVisible(false);
+        this.jButtonC4R2.setVisible(false);
+        this.jButtonC5R2.setVisible(false);
+        this.jButtonC6R2.setVisible(false);
+        this.jButtonC0R3.setVisible(false);
+        this.jButtonC1R3.setVisible(false);
+        this.jButtonC2R3.setVisible(false);
+        this.jButtonC3R3.setVisible(false);
+        this.jButtonC4R3.setVisible(false);
+        this.jButtonC5R3.setVisible(false);
+        this.jButtonC6R3.setVisible(false);
+        this.jButtonC0R4.setVisible(false);
+        this.jButtonC1R4.setVisible(false);
+        this.jButtonC2R4.setVisible(false);
+        this.jButtonC3R4.setVisible(false);
+        this.jButtonC4R4.setVisible(false);
+        this.jButtonC5R4.setVisible(false);
+        this.jButtonC6R4.setVisible(false);
+        this.jButtonC0R5.setVisible(false);
+        this.jButtonC1R5.setVisible(false);
+        this.jButtonC2R5.setVisible(false);
+        this.jButtonC3R5.setVisible(false);
+        this.jButtonC4R5.setVisible(false);
+        this.jButtonC5R5.setVisible(false);
+        this.jButtonC6R5.setVisible(false);
         this.jComboBoxPlayer1MarkerChoice.setModel(new javax.swing.DefaultComboBoxModel(this.logic.SetMarkerOptions(Marker.GetOptions())));
     }
 
@@ -72,6 +116,8 @@ public class JFrameConnectFour extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabelConnectFourTitle = new javax.swing.JLabel();
         jLabelAIChoice = new javax.swing.JLabel();
         jLabelAIAnswer = new javax.swing.JLabel();
@@ -92,7 +138,64 @@ public class JFrameConnectFour extends javax.swing.JFrame
         jButtonColumn6 = new javax.swing.JButton();
         jButtonColumn7 = new javax.swing.JButton();
         jLabelInstructions = new javax.swing.JLabel();
-        jLabelGameBoard = new javax.swing.JLabel();
+        jButtonC4R0 = new javax.swing.JButton();
+        jButtonC5R0 = new javax.swing.JButton();
+        jButtonC6R0 = new javax.swing.JButton();
+        jButtonC0R0 = new javax.swing.JButton();
+        jButtonC1R0 = new javax.swing.JButton();
+        jButtonC2R0 = new javax.swing.JButton();
+        jButtonC3R0 = new javax.swing.JButton();
+        jButtonC4R1 = new javax.swing.JButton();
+        jButtonC5R1 = new javax.swing.JButton();
+        jButtonC6R1 = new javax.swing.JButton();
+        jButtonC0R1 = new javax.swing.JButton();
+        jButtonC1R1 = new javax.swing.JButton();
+        jButtonC2R1 = new javax.swing.JButton();
+        jButtonC3R1 = new javax.swing.JButton();
+        jButtonC4R3 = new javax.swing.JButton();
+        jButtonC5R3 = new javax.swing.JButton();
+        jButtonC6R2 = new javax.swing.JButton();
+        jButtonC0R2 = new javax.swing.JButton();
+        jButtonC1R3 = new javax.swing.JButton();
+        jButtonC2R3 = new javax.swing.JButton();
+        jButtonC3R3 = new javax.swing.JButton();
+        jButtonC4R4 = new javax.swing.JButton();
+        jButtonC5R4 = new javax.swing.JButton();
+        jButtonC6R4 = new javax.swing.JButton();
+        jButtonC0R4 = new javax.swing.JButton();
+        jButtonC1R4 = new javax.swing.JButton();
+        jButtonC2R4 = new javax.swing.JButton();
+        jButtonC3R4 = new javax.swing.JButton();
+        jButtonC4R5 = new javax.swing.JButton();
+        jButtonC5R5 = new javax.swing.JButton();
+        jButtonC6R5 = new javax.swing.JButton();
+        jButtonC0R5 = new javax.swing.JButton();
+        jButtonC1R5 = new javax.swing.JButton();
+        jButtonC2R5 = new javax.swing.JButton();
+        jButtonC3R5 = new javax.swing.JButton();
+        jButtonC4R2 = new javax.swing.JButton();
+        jButtonC5R2 = new javax.swing.JButton();
+        jButtonC6R3 = new javax.swing.JButton();
+        jButtonC0R3 = new javax.swing.JButton();
+        jButtonC1R2 = new javax.swing.JButton();
+        jButtonC2R2 = new javax.swing.JButton();
+        jButtonC3R2 = new javax.swing.JButton();
+        jLabelDifficultyAnswer = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String []
+            {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,7 +259,7 @@ public class JFrameConnectFour extends javax.swing.JFrame
 
         jLabelPlayer2Marker.setText("jLabel2");
 
-        jButtonColumn1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jButtonColumn1.setText("1");
         jButtonColumn1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -166,16 +269,37 @@ public class JFrameConnectFour extends javax.swing.JFrame
             }
         });
 
-        jButtonColumn2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jButtonColumn2.setText("2");
+        jButtonColumn2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonColumn2ActionPerformed(evt);
+            }
+        });
 
-        jButtonColumn3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jButtonColumn3.setText("3");
+        jButtonColumn3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonColumn3ActionPerformed(evt);
+            }
+        });
 
-        jButtonColumn4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jButtonColumn4.setText("4");
+        jButtonColumn4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonColumn4ActionPerformed(evt);
+            }
+        });
 
-        jButtonColumn5.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn5.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jButtonColumn5.setText("5");
         jButtonColumn5.addActionListener(new java.awt.event.ActionListener()
         {
@@ -185,94 +309,595 @@ public class JFrameConnectFour extends javax.swing.JFrame
             }
         });
 
-        jButtonColumn6.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn6.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jButtonColumn6.setText("6");
+        jButtonColumn6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonColumn6ActionPerformed(evt);
+            }
+        });
 
-        jButtonColumn7.setFont(new java.awt.Font("Tempus Sans ITC", 0, 11)); // NOI18N
+        jButtonColumn7.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jButtonColumn7.setText("7");
+        jButtonColumn7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonColumn7ActionPerformed(evt);
+            }
+        });
 
+        jLabelInstructions.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
         jLabelInstructions.setText("jLabel2");
 
-        jLabelGameBoard.setText("jLabel1");
+        jButtonC4R0.setText(" ");
+        jButtonC4R0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC4R0ActionPerformed(evt);
+            }
+        });
+
+        jButtonC5R0.setText(" ");
+        jButtonC5R0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC5R0ActionPerformed(evt);
+            }
+        });
+
+        jButtonC6R0.setText(" ");
+        jButtonC6R0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC6R0ActionPerformed(evt);
+            }
+        });
+
+        jButtonC0R0.setText(" ");
+        jButtonC0R0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC0R0ActionPerformed(evt);
+            }
+        });
+
+        jButtonC1R0.setText(" ");
+        jButtonC1R0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC1R0ActionPerformed(evt);
+            }
+        });
+
+        jButtonC2R0.setText(" ");
+        jButtonC2R0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC2R0ActionPerformed(evt);
+            }
+        });
+
+        jButtonC3R0.setText(" ");
+        jButtonC3R0.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC3R0ActionPerformed(evt);
+            }
+        });
+
+        jButtonC4R1.setText(" ");
+        jButtonC4R1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC4R1ActionPerformed(evt);
+            }
+        });
+
+        jButtonC5R1.setText(" ");
+        jButtonC5R1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC5R1ActionPerformed(evt);
+            }
+        });
+
+        jButtonC6R1.setText(" ");
+        jButtonC6R1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC6R1ActionPerformed(evt);
+            }
+        });
+
+        jButtonC0R1.setText(" ");
+        jButtonC0R1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC0R1ActionPerformed(evt);
+            }
+        });
+
+        jButtonC1R1.setText(" ");
+        jButtonC1R1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC1R1ActionPerformed(evt);
+            }
+        });
+
+        jButtonC2R1.setText(" ");
+        jButtonC2R1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC2R1ActionPerformed(evt);
+            }
+        });
+
+        jButtonC3R1.setText(" ");
+        jButtonC3R1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC3R1ActionPerformed(evt);
+            }
+        });
+
+        jButtonC4R3.setText(" ");
+        jButtonC4R3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC4R3ActionPerformed(evt);
+            }
+        });
+
+        jButtonC5R3.setText(" ");
+        jButtonC5R3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC5R3ActionPerformed(evt);
+            }
+        });
+
+        jButtonC6R2.setText(" ");
+        jButtonC6R2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC6R2ActionPerformed(evt);
+            }
+        });
+
+        jButtonC0R2.setText(" ");
+        jButtonC0R2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC0R2ActionPerformed(evt);
+            }
+        });
+
+        jButtonC1R3.setText(" ");
+        jButtonC1R3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC1R3ActionPerformed(evt);
+            }
+        });
+
+        jButtonC2R3.setText(" ");
+        jButtonC2R3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC2R3ActionPerformed(evt);
+            }
+        });
+
+        jButtonC3R3.setText(" ");
+        jButtonC3R3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC3R3ActionPerformed(evt);
+            }
+        });
+
+        jButtonC4R4.setText(" ");
+        jButtonC4R4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC4R4ActionPerformed(evt);
+            }
+        });
+
+        jButtonC5R4.setText(" ");
+        jButtonC5R4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC5R4ActionPerformed(evt);
+            }
+        });
+
+        jButtonC6R4.setText(" ");
+        jButtonC6R4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC6R4ActionPerformed(evt);
+            }
+        });
+
+        jButtonC0R4.setText(" ");
+        jButtonC0R4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC0R4ActionPerformed(evt);
+            }
+        });
+
+        jButtonC1R4.setText(" ");
+        jButtonC1R4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC1R4ActionPerformed(evt);
+            }
+        });
+
+        jButtonC2R4.setText(" ");
+        jButtonC2R4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC2R4ActionPerformed(evt);
+            }
+        });
+
+        jButtonC3R4.setText(" ");
+        jButtonC3R4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC3R4ActionPerformed(evt);
+            }
+        });
+
+        jButtonC4R5.setText(" ");
+        jButtonC4R5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC4R5ActionPerformed(evt);
+            }
+        });
+
+        jButtonC5R5.setText(" ");
+        jButtonC5R5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC5R5ActionPerformed(evt);
+            }
+        });
+
+        jButtonC6R5.setText(" ");
+        jButtonC6R5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC6R5ActionPerformed(evt);
+            }
+        });
+
+        jButtonC0R5.setText(" ");
+        jButtonC0R5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC0R5ActionPerformed(evt);
+            }
+        });
+
+        jButtonC1R5.setText(" ");
+        jButtonC1R5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC1R5ActionPerformed(evt);
+            }
+        });
+
+        jButtonC2R5.setText(" ");
+        jButtonC2R5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC2R5ActionPerformed(evt);
+            }
+        });
+
+        jButtonC3R5.setText(" ");
+        jButtonC3R5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC3R5ActionPerformed(evt);
+            }
+        });
+
+        jButtonC4R2.setText(" ");
+        jButtonC4R2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC4R2ActionPerformed(evt);
+            }
+        });
+
+        jButtonC5R2.setText(" ");
+        jButtonC5R2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC5R2ActionPerformed(evt);
+            }
+        });
+
+        jButtonC6R3.setText(" ");
+        jButtonC6R3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC6R3ActionPerformed(evt);
+            }
+        });
+
+        jButtonC0R3.setText(" ");
+        jButtonC0R3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC0R3ActionPerformed(evt);
+            }
+        });
+
+        jButtonC1R2.setText(" ");
+        jButtonC1R2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC1R2ActionPerformed(evt);
+            }
+        });
+
+        jButtonC2R2.setText(" ");
+        jButtonC2R2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC2R2ActionPerformed(evt);
+            }
+        });
+
+        jButtonC3R2.setText(" ");
+        jButtonC3R2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonC3R2ActionPerformed(evt);
+            }
+        });
+
+        jLabelDifficultyAnswer.setFont(new java.awt.Font("Tempus Sans ITC", 1, 11)); // NOI18N
+        jLabelDifficultyAnswer.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxDifficultyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelPlayer1MarkerChoice)
                         .addGap(20, 20, 20)
                         .addComponent(jLabelPlayer1Marker))
                     .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDifficultyChoice)
-                    .addComponent(jComboBoxDifficultyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelPlayer2MarkerChoice)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelPlayer2Marker))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelAIChoice)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAIChoice)
+                            .addComponent(jLabelDifficultyChoice))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelAIAnswer))
-                    .addComponent(jLabelInstructions))
-                .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDifficultyAnswer)
+                            .addComponent(jLabelAIAnswer))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelConnectFourTitle)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(jButtonColumn1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonColumn2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonColumn3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonColumn4)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonC0R2)
+                            .addComponent(jButtonC0R3)
+                            .addComponent(jButtonColumn1)
+                            .addComponent(jButtonC0R4)
+                            .addComponent(jButtonC0R0)
+                            .addComponent(jButtonC0R5)
+                            .addComponent(jButtonC0R1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonColumn5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonC1R2)
+                            .addComponent(jButtonC1R3)
+                            .addComponent(jButtonColumn2)
+                            .addComponent(jButtonC1R4)
+                            .addComponent(jButtonC1R0)
+                            .addComponent(jButtonC1R5)
+                            .addComponent(jButtonC1R1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonColumn6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonC2R2)
+                            .addComponent(jButtonC2R3)
+                            .addComponent(jButtonColumn3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonC2R4)
+                            .addComponent(jButtonC2R0)
+                            .addComponent(jButtonC2R5)
+                            .addComponent(jButtonC2R1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonColumn7))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonC3R2)
+                            .addComponent(jButtonC3R3)
+                            .addComponent(jButtonColumn4)
+                            .addComponent(jButtonC3R4)
+                            .addComponent(jButtonC3R0)
+                            .addComponent(jButtonC3R5)
+                            .addComponent(jButtonC3R1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonC4R4)
+                            .addComponent(jButtonColumn5)
+                            .addComponent(jButtonC4R0)
+                            .addComponent(jButtonC4R1)
+                            .addComponent(jButtonC4R5)
+                            .addComponent(jButtonC4R2)
+                            .addComponent(jButtonC4R3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonC5R4)
+                            .addComponent(jButtonColumn6)
+                            .addComponent(jButtonC5R0)
+                            .addComponent(jButtonC5R5)
+                            .addComponent(jButtonC5R1)
+                            .addComponent(jButtonC5R2)
+                            .addComponent(jButtonC5R3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonC6R2)
+                            .addComponent(jButtonC6R4)
+                            .addComponent(jButtonColumn7)
+                            .addComponent(jButtonC6R0)
+                            .addComponent(jButtonC6R5)
+                            .addComponent(jButtonC6R1)
+                            .addComponent(jButtonC6R3)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabelGameBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabelInstructions)))
+                .addGap(18, 18, 18))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(jLabelConnectFourTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
                 .addComponent(jLabelConnectFourTitle)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonColumn1)
-                    .addComponent(jButtonColumn2)
-                    .addComponent(jButtonColumn3)
-                    .addComponent(jButtonColumn4)
-                    .addComponent(jButtonColumn5)
-                    .addComponent(jButtonColumn6)
-                    .addComponent(jButtonColumn7)
-                    .addComponent(jLabelInstructions))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelInstructions)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonColumn1)
+                            .addComponent(jButtonColumn2)
+                            .addComponent(jButtonColumn3)
+                            .addComponent(jButtonColumn4)
+                            .addComponent(jButtonColumn5)
+                            .addComponent(jButtonColumn6)
+                            .addComponent(jButtonColumn7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonC0R0)
+                            .addComponent(jButtonC1R0)
+                            .addComponent(jButtonC2R0)
+                            .addComponent(jButtonC3R0)
+                            .addComponent(jButtonC4R0)
+                            .addComponent(jButtonC5R0)
+                            .addComponent(jButtonC6R0))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonC0R1)
+                            .addComponent(jButtonC1R1)
+                            .addComponent(jButtonC2R1)
+                            .addComponent(jButtonC3R1)
+                            .addComponent(jButtonC4R1)
+                            .addComponent(jButtonC5R1)
+                            .addComponent(jButtonC6R1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonC0R2)
+                            .addComponent(jButtonC1R2)
+                            .addComponent(jButtonC2R2)
+                            .addComponent(jButtonC3R2)
+                            .addComponent(jButtonC4R2)
+                            .addComponent(jButtonC5R2)
+                            .addComponent(jButtonC6R2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButtonC1R3)
+                                .addComponent(jButtonC2R3)
+                                .addComponent(jButtonC3R3)
+                                .addComponent(jButtonC4R3)
+                                .addComponent(jButtonC5R3))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButtonC0R3)
+                                .addComponent(jButtonC6R3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonC0R4)
+                            .addComponent(jButtonC1R4)
+                            .addComponent(jButtonC2R4)
+                            .addComponent(jButtonC3R4)
+                            .addComponent(jButtonC4R4)
+                            .addComponent(jButtonC5R4)
+                            .addComponent(jButtonC6R4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonC0R5)
+                            .addComponent(jButtonC1R5)
+                            .addComponent(jButtonC2R5)
+                            .addComponent(jButtonC3R5)
+                            .addComponent(jButtonC4R5)
+                            .addComponent(jButtonC5R5)
+                            .addComponent(jButtonC6R5)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelPlayer1MarkerChoice)
                             .addComponent(jLabelPlayer1Marker))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxPlayer1MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelPlayer2MarkerChoice)
                             .addComponent(jLabelPlayer2Marker))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(14, 14, 14)
                         .addComponent(jComboBoxPlayer2MarkerChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -281,13 +906,12 @@ public class JFrameConnectFour extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxAIChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelDifficultyChoice)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDifficultyChoice)
+                            .addComponent(jLabelDifficultyAnswer))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxDifficultyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabelGameBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                        .addComponent(jComboBoxDifficultyChoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -329,11 +953,12 @@ public class JFrameConnectFour extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jComboBoxAIChoiceActionPerformed
         // TODO add your handling code here:
         int ai = this.jComboBoxAIChoice.getSelectedIndex();
+        this.jComboBoxAIChoice.setVisible(false);
+        this.jLabelAIAnswer.setVisible(true);
         if (ai == 0)
         {
-            //player2 is run by AI
-            this.jComboBoxAIChoice.setVisible(false);
-            this.jLabelAIAnswer.setVisible(true);
+            //player2 is run by AI            
+            this.jLabelAIAnswer.setText("Yes");
             this.jLabelDifficultyChoice.setVisible(true);
             this.jComboBoxDifficultyChoice.setVisible(true);
             this.jComboBoxDifficultyChoice.setModel(new javax.swing.DefaultComboBoxModel(AILevel.GetOptions()));
@@ -341,33 +966,484 @@ public class JFrameConnectFour extends javax.swing.JFrame
         } else if (ai != -1)
         {
             //player2 is hot seat
+            this.jLabelAIAnswer.setText("No");
             this.useAI = false;
+            BoardVisable();
+            OutputBoard();
         }
     }//GEN-LAST:event_jComboBoxAIChoiceActionPerformed
 
     private void jButtonColumn1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn1ActionPerformed
     {//GEN-HEADEREND:event_jButtonColumn1ActionPerformed
         // TODO add your handling code here:
+        Column1Move();
     }//GEN-LAST:event_jButtonColumn1ActionPerformed
 
+    private void Column1Move()
+    {
+        if (!this.logic.PlaceMarker(1))
+        {
+            this.jLabelInstructions.setText("That is not a valid move.");
+        } else
+        {
+            this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        }
+        GeneralMove();
+    }
+
+    private void Column2Move()
+    {
+        if (!this.logic.PlaceMarker(2))
+        {
+            this.jLabelInstructions.setText("That is not a valid move.");
+        } else
+        {
+            this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        }
+        GeneralMove();
+    }
+
+    private void Column3Move()
+    {
+        if (!this.logic.PlaceMarker(3))
+        {
+            this.jLabelInstructions.setText("That is not a valid move.");
+        } else
+        {
+            this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        }
+        GeneralMove();
+    }
+
+    private void Column4Move()
+    {
+        if (!this.logic.PlaceMarker(4))
+        {
+            this.jLabelInstructions.setText("That is not a valid move.");
+        } else
+        {
+            this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        }
+        GeneralMove();
+    }
+
+    private void Column5Move()
+    {
+        if (!this.logic.PlaceMarker(5))
+        {
+            this.jLabelInstructions.setText("That is not a valid move.");
+        } else
+        {
+            this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        }
+        GeneralMove();
+    }
+
+    private void Column6Move()
+    {
+        if (!this.logic.PlaceMarker(6))
+        {
+            this.jLabelInstructions.setText("That is not a valid move.");
+        } else
+        {
+            this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        }
+        GeneralMove();
+    }
+
+    private void Column7Move()
+    {
+        if (!this.logic.PlaceMarker(7))
+        {
+            this.jLabelInstructions.setText("That is not a valid move.");
+        } else
+        {
+            this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
+        }
+        GeneralMove();
+    }
+
+    private void GeneralMove()
+    {
+        if (this.logic.WinCondition())
+        {
+            WinMessage(this.logic.GetTurnCount() % 2 == 1 ? 1 : 2);
+        }
+        if (this.logic.BoardFull())
+        {
+            TieMessage();
+        }
+        if (this.useAI)
+        {
+            this.logic.PlaceMarker(this.logic.GetAIMove(ai));
+            if (this.logic.WinCondition())
+            {
+                LooseMessage();
+            }
+            if (this.logic.BoardFull())
+            {
+                TieMessage();
+            }
+        }
+        OutputBoard();
+    }
+    
+    private void WinMessage(int winner)
+    {
+        this.jLabelPlayer1Marker.setVisible(false);
+        this.jLabelPlayer1MarkerChoice.setVisible(false);
+        this.jLabelPlayer2MarkerChoice.setVisible(false);
+        this.jComboBoxPlayer2MarkerChoice.setVisible(false);
+        this.jLabelPlayer2Marker.setVisible(false);
+        this.jLabelDifficultyChoice.setVisible(false);
+        this.jLabelDifficultyAnswer.setVisible(false);
+        this.jComboBoxDifficultyChoice.setVisible(false);
+        this.jLabelAIAnswer.setVisible(false);
+        this.jComboBoxAIChoice.setVisible(false);
+        this.jComboBoxPlayer1MarkerChoice.setVisible(false);
+        OutputBoard();
+        this.jLabelInstructions.setText("Congrats. Player "+winner+" Wins.");   
+    }
+    
+    private void TieMessage()
+    {
+        this.jLabelPlayer1Marker.setVisible(false);
+        this.jLabelPlayer1MarkerChoice.setVisible(false);
+        this.jLabelPlayer2MarkerChoice.setVisible(false);
+        this.jComboBoxPlayer2MarkerChoice.setVisible(false);
+        this.jLabelPlayer2Marker.setVisible(false);
+        this.jLabelDifficultyChoice.setVisible(false);
+        this.jLabelDifficultyAnswer.setVisible(false);
+        this.jComboBoxDifficultyChoice.setVisible(false);
+        this.jLabelAIAnswer.setVisible(false);
+        this.jComboBoxAIChoice.setVisible(false);
+        this.jComboBoxPlayer1MarkerChoice.setVisible(false);
+        OutputBoard();
+        this.jLabelInstructions.setText("This game is a tie.");  
+    }
+    private void LooseMessage()
+    {
+        this.jLabelPlayer1Marker.setVisible(false);
+        this.jLabelPlayer1MarkerChoice.setVisible(false);
+        this.jLabelPlayer2MarkerChoice.setVisible(false);
+        this.jComboBoxPlayer2MarkerChoice.setVisible(false);
+        this.jLabelPlayer2Marker.setVisible(false);
+        this.jLabelDifficultyChoice.setVisible(false);
+        this.jLabelDifficultyAnswer.setVisible(false);
+        this.jComboBoxDifficultyChoice.setVisible(false);
+        this.jLabelAIAnswer.setVisible(false);
+        this.jComboBoxAIChoice.setVisible(false);
+        this.jComboBoxPlayer1MarkerChoice.setVisible(false);
+        OutputBoard();
+        this.jLabelInstructions.setText("Sorry, you lost.");  
+    }
+    
     private void jButtonColumn5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn5ActionPerformed
     {//GEN-HEADEREND:event_jButtonColumn5ActionPerformed
         // TODO add your handling code here:
+        Column5Move();
     }//GEN-LAST:event_jButtonColumn5ActionPerformed
 
     private void jComboBoxDifficultyChoiceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboBoxDifficultyChoiceActionPerformed
     {//GEN-HEADEREND:event_jComboBoxDifficultyChoiceActionPerformed
         // TODO add your handling code here:
-        int difficulty = this.jComboBoxAIChoice.getSelectedIndex();
+        int difficulty = this.jComboBoxDifficultyChoice.getSelectedIndex();
         this.ai = new AI(difficulty);
-        this.jLabelPlayer1Marker.setVisible(false);
-        this.jLabelPlayer1MarkerChoice.setVisible(false);
-        this.jLabelPlayer2MarkerChoice.setVisible(false);
-        this.jLabelPlayer2Marker.setVisible(false);
-        this.jLabelDifficultyChoice.setVisible(false);
         this.jComboBoxDifficultyChoice.setVisible(false);
+        this.jLabelDifficultyAnswer.setVisible(true);
+        this.jLabelDifficultyAnswer.setText(this.ai.GetDifficultyLevel());
         this.jLabelAIAnswer.setVisible(false);
         this.jLabelAIChoice.setVisible(false);
+        BoardVisable();
+        OutputBoard();
+    }//GEN-LAST:event_jComboBoxDifficultyChoiceActionPerformed
+
+    private void jButtonC4R0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC4R0ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC4R0ActionPerformed
+        // TODO add your handling code here:
+        Column5Move();
+    }//GEN-LAST:event_jButtonC4R0ActionPerformed
+
+    private void jButtonC0R0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC0R0ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC0R0ActionPerformed
+        // TODO add your handling code here:
+        Column1Move();
+
+    }//GEN-LAST:event_jButtonC0R0ActionPerformed
+
+    private void jButtonC4R1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC4R1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC4R1ActionPerformed
+        // TODO add your handling code here:
+        Column5Move();
+    }//GEN-LAST:event_jButtonC4R1ActionPerformed
+
+    private void jButtonC0R1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC0R1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC0R1ActionPerformed
+        // TODO add your handling code here:
+        Column1Move();
+    }//GEN-LAST:event_jButtonC0R1ActionPerformed
+
+    private void jButtonC4R3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC4R3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC4R3ActionPerformed
+        // TODO add your handling code here:
+        Column5Move();
+    }//GEN-LAST:event_jButtonC4R3ActionPerformed
+
+    private void jButtonC0R2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC0R2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC0R2ActionPerformed
+        // TODO add your handling code here:
+        Column1Move();
+    }//GEN-LAST:event_jButtonC0R2ActionPerformed
+
+    private void jButtonC4R4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC4R4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC4R4ActionPerformed
+        // TODO add your handling code here:
+        Column5Move();
+    }//GEN-LAST:event_jButtonC4R4ActionPerformed
+
+    private void jButtonC0R4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC0R4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC0R4ActionPerformed
+        // TODO add your handling code here:
+        Column1Move();
+    }//GEN-LAST:event_jButtonC0R4ActionPerformed
+
+    private void jButtonC4R5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC4R5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC4R5ActionPerformed
+        // TODO add your handling code here:
+        Column5Move();
+    }//GEN-LAST:event_jButtonC4R5ActionPerformed
+
+    private void jButtonC0R5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC0R5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC0R5ActionPerformed
+        // TODO add your handling code here:
+        Column1Move();
+    }//GEN-LAST:event_jButtonC0R5ActionPerformed
+
+    private void jButtonC4R2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC4R2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC4R2ActionPerformed
+        // TODO add your handling code here:
+        Column5Move();
+    }//GEN-LAST:event_jButtonC4R2ActionPerformed
+
+    private void jButtonC0R3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC0R3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC0R3ActionPerformed
+        // TODO add your handling code here:
+        Column1Move();
+    }//GEN-LAST:event_jButtonC0R3ActionPerformed
+
+    private void jButtonC3R0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC3R0ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC3R0ActionPerformed
+        // TODO add your handling code here:
+        Column4Move();
+    }//GEN-LAST:event_jButtonC3R0ActionPerformed
+
+    private void jButtonC5R3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC5R3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC5R3ActionPerformed
+        // TODO add your handling code here:
+        Column6Move();
+    }//GEN-LAST:event_jButtonC5R3ActionPerformed
+
+    private void jButtonC2R3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC2R3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC2R3ActionPerformed
+        // TODO add your handling code here:
+        Column3Move();
+    }//GEN-LAST:event_jButtonC2R3ActionPerformed
+
+    private void jButtonC1R1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC1R1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC1R1ActionPerformed
+        // TODO add your handling code here:
+        Column2Move();
+    }//GEN-LAST:event_jButtonC1R1ActionPerformed
+
+    private void jButtonC2R5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC2R5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC2R5ActionPerformed
+        // TODO add your handling code here:
+        Column3Move();
+    }//GEN-LAST:event_jButtonC2R5ActionPerformed
+
+    private void jButtonColumn2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonColumn2ActionPerformed
+        // TODO add your handling code here:
+        Column2Move();
+    }//GEN-LAST:event_jButtonColumn2ActionPerformed
+
+    private void jButtonC1R0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC1R0ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC1R0ActionPerformed
+        // TODO add your handling code here:
+        Column2Move();
+    }//GEN-LAST:event_jButtonC1R0ActionPerformed
+
+    private void jButtonC1R2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC1R2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC1R2ActionPerformed
+        // TODO add your handling code here:
+        Column2Move();
+    }//GEN-LAST:event_jButtonC1R2ActionPerformed
+
+    private void jButtonC1R3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC1R3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC1R3ActionPerformed
+        // TODO add your handling code here:
+        Column2Move();
+    }//GEN-LAST:event_jButtonC1R3ActionPerformed
+
+    private void jButtonC1R4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC1R4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC1R4ActionPerformed
+        // TODO add your handling code here:
+        Column2Move();
+    }//GEN-LAST:event_jButtonC1R4ActionPerformed
+
+    private void jButtonC1R5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC1R5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC1R5ActionPerformed
+        // TODO add your handling code here:
+        Column2Move();
+    }//GEN-LAST:event_jButtonC1R5ActionPerformed
+
+    private void jButtonColumn3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonColumn3ActionPerformed
+        // TODO add your handling code here:
+        Column3Move();
+    }//GEN-LAST:event_jButtonColumn3ActionPerformed
+
+    private void jButtonC2R0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC2R0ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC2R0ActionPerformed
+        // TODO add your handling code here:
+        Column3Move();
+    }//GEN-LAST:event_jButtonC2R0ActionPerformed
+
+    private void jButtonC2R1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC2R1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC2R1ActionPerformed
+        // TODO add your handling code here:
+        Column3Move();
+    }//GEN-LAST:event_jButtonC2R1ActionPerformed
+
+    private void jButtonC2R2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC2R2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC2R2ActionPerformed
+        // TODO add your handling code here:
+        Column3Move();
+    }//GEN-LAST:event_jButtonC2R2ActionPerformed
+
+    private void jButtonC2R4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC2R4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC2R4ActionPerformed
+        // TODO add your handling code here:
+        Column3Move();
+    }//GEN-LAST:event_jButtonC2R4ActionPerformed
+
+    private void jButtonColumn4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonColumn4ActionPerformed
+        // TODO add your handling code here:
+        Column4Move();
+    }//GEN-LAST:event_jButtonColumn4ActionPerformed
+
+    private void jButtonC3R1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC3R1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC3R1ActionPerformed
+        // TODO add your handling code here:
+        Column4Move();
+    }//GEN-LAST:event_jButtonC3R1ActionPerformed
+
+    private void jButtonC3R2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC3R2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC3R2ActionPerformed
+        // TODO add your handling code here:
+        Column4Move();
+    }//GEN-LAST:event_jButtonC3R2ActionPerformed
+
+    private void jButtonC3R3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC3R3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC3R3ActionPerformed
+        // TODO add your handling code here:
+        Column4Move();
+    }//GEN-LAST:event_jButtonC3R3ActionPerformed
+
+    private void jButtonC3R4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC3R4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC3R4ActionPerformed
+        // TODO add your handling code here:
+        Column4Move();
+    }//GEN-LAST:event_jButtonC3R4ActionPerformed
+
+    private void jButtonC3R5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC3R5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC3R5ActionPerformed
+        // TODO add your handling code here:
+        Column4Move();
+    }//GEN-LAST:event_jButtonC3R5ActionPerformed
+
+    private void jButtonColumn6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn6ActionPerformed
+    {//GEN-HEADEREND:event_jButtonColumn6ActionPerformed
+        // TODO add your handling code here:
+        Column6Move();
+    }//GEN-LAST:event_jButtonColumn6ActionPerformed
+
+    private void jButtonC5R0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC5R0ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC5R0ActionPerformed
+        // TODO add your handling code here:
+        Column6Move();
+    }//GEN-LAST:event_jButtonC5R0ActionPerformed
+
+    private void jButtonC5R1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC5R1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC5R1ActionPerformed
+        // TODO add your handling code here:
+        Column6Move();
+    }//GEN-LAST:event_jButtonC5R1ActionPerformed
+
+    private void jButtonC5R2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC5R2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC5R2ActionPerformed
+        // TODO add your handling code here:
+        Column6Move();
+    }//GEN-LAST:event_jButtonC5R2ActionPerformed
+
+    private void jButtonC5R4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC5R4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC5R4ActionPerformed
+        // TODO add your handling code here:
+        Column6Move();
+    }//GEN-LAST:event_jButtonC5R4ActionPerformed
+
+    private void jButtonC5R5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC5R5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC5R5ActionPerformed
+        // TODO add your handling code here:
+        Column6Move();
+    }//GEN-LAST:event_jButtonC5R5ActionPerformed
+
+    private void jButtonColumn7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonColumn7ActionPerformed
+    {//GEN-HEADEREND:event_jButtonColumn7ActionPerformed
+        // TODO add your handling code here:
+        Column7Move();
+    }//GEN-LAST:event_jButtonColumn7ActionPerformed
+
+    private void jButtonC6R0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC6R0ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC6R0ActionPerformed
+        // TODO add your handling code here:
+        Column7Move();
+    }//GEN-LAST:event_jButtonC6R0ActionPerformed
+
+    private void jButtonC6R1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC6R1ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC6R1ActionPerformed
+        // TODO add your handling code here:
+        Column7Move();
+    }//GEN-LAST:event_jButtonC6R1ActionPerformed
+
+    private void jButtonC6R2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC6R2ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC6R2ActionPerformed
+        // TODO add your handling code here:
+        Column7Move();
+    }//GEN-LAST:event_jButtonC6R2ActionPerformed
+
+    private void jButtonC6R3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC6R3ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC6R3ActionPerformed
+        // TODO add your handling code here:
+        Column7Move();
+    }//GEN-LAST:event_jButtonC6R3ActionPerformed
+
+    private void jButtonC6R4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC6R4ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC6R4ActionPerformed
+        // TODO add your handling code here:
+        Column7Move();
+    }//GEN-LAST:event_jButtonC6R4ActionPerformed
+
+    private void jButtonC6R5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonC6R5ActionPerformed
+    {//GEN-HEADEREND:event_jButtonC6R5ActionPerformed
+        // TODO add your handling code here:
+        Column7Move();
+    }//GEN-LAST:event_jButtonC6R5ActionPerformed
+    private void BoardVisable()
+    {
+        this.jLabelInstructions.setVisible(true);
+        this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
         this.jButtonColumn1.setVisible(true);
         this.jButtonColumn2.setVisible(true);
         this.jButtonColumn3.setVisible(true);
@@ -375,106 +1451,94 @@ public class JFrameConnectFour extends javax.swing.JFrame
         this.jButtonColumn5.setVisible(true);
         this.jButtonColumn6.setVisible(true);
         this.jButtonColumn7.setVisible(true);
-        this.jLabelInstructions.setVisible(true);
-        this.jLabelInstructions.setText("Select the column you would like to place your marker in.");
-        this.jLabelGameBoard.setVisible(true);
-        this.jLabelGameBoard.setText(OutputBoard());
-    }//GEN-LAST:event_jComboBoxDifficultyChoiceActionPerformed
+        this.jButtonC0R0.setVisible(true);
+        this.jButtonC1R0.setVisible(true);
+        this.jButtonC2R0.setVisible(true);
+        this.jButtonC3R0.setVisible(true);
+        this.jButtonC4R0.setVisible(true);
+        this.jButtonC5R0.setVisible(true);
+        this.jButtonC6R0.setVisible(true);
+        this.jButtonC0R1.setVisible(true);
+        this.jButtonC1R1.setVisible(true);
+        this.jButtonC2R1.setVisible(true);
+        this.jButtonC3R1.setVisible(true);
+        this.jButtonC4R1.setVisible(true);
+        this.jButtonC5R1.setVisible(true);
+        this.jButtonC6R1.setVisible(true);
+        this.jButtonC0R2.setVisible(true);
+        this.jButtonC1R2.setVisible(true);
+        this.jButtonC2R2.setVisible(true);
+        this.jButtonC3R2.setVisible(true);
+        this.jButtonC4R2.setVisible(true);
+        this.jButtonC5R2.setVisible(true);
+        this.jButtonC6R2.setVisible(true);
+        this.jButtonC0R3.setVisible(true);
+        this.jButtonC1R3.setVisible(true);
+        this.jButtonC2R3.setVisible(true);
+        this.jButtonC3R3.setVisible(true);
+        this.jButtonC4R3.setVisible(true);
+        this.jButtonC5R3.setVisible(true);
+        this.jButtonC6R3.setVisible(true);
+        this.jButtonC0R4.setVisible(true);
+        this.jButtonC1R4.setVisible(true);
+        this.jButtonC2R4.setVisible(true);
+        this.jButtonC3R4.setVisible(true);
+        this.jButtonC4R4.setVisible(true);
+        this.jButtonC5R4.setVisible(true);
+        this.jButtonC6R4.setVisible(true);
+        this.jButtonC0R5.setVisible(true);
+        this.jButtonC1R5.setVisible(true);
+        this.jButtonC2R5.setVisible(true);
+        this.jButtonC3R5.setVisible(true);
+        this.jButtonC4R5.setVisible(true);
+        this.jButtonC5R5.setVisible(true);
+        this.jButtonC6R5.setVisible(true);
+    }
 
-    
-    private String OutputBoard()
+    private void OutputBoard()
     {
-        int arrayRow = 0;
-        int arrayColumn = 0;
-        String board = "<html>";
-
-        for (int row = 0; row <= 13; row++)
-        {
-            for (int column = 0; column <= 13; column++)
-            {
-                if (row == 0)
-                {
-                    if (column == 0)
-                    {
-                        board += "\u250f";
-                        //upper left curve \u250f
-                    } else if (column == 14)
-                    {
-                        board += "\u2513<br />";
-                        //upper right curve \u2513
-                    } else if (column % 2 == 1)
-                    {
-                        board += "\u2501";
-                        //straight across \u2501
-                    } else
-                    {
-                        board += "\u2533";
-                        //across and down \u2533
-                    }
-                } else if (row == 13)
-                {
-                    if (column == 0)
-                    {
-                        board += "\u2517";
-                        //bottom left curve \u2517
-                    } else if (column == 14)
-                    {
-                        board += "\u251b<br />";
-                        //bottom right curve \u251b
-                    } else if (column % 2 == 1)
-                    {
-                        board += "\u2501";
-                        //straight across \u2501
-                    } else
-                    {
-                        board += "\u253b";
-                        //across and up \u253b
-                    }
-                } else if (row % 2 == 1)
-                {
-                    if (column == 0)
-                    {
-                        board += "\u2523";
-                        //up and to right \u2523
-                    } else if (column == 14)
-                    {
-                        board += "\u252b<br />";
-                        //up and to left \u252b
-                    } else if (column % 2 == 1)
-                    {
-                        board += "\u2501";
-                        //straight across \u2501
-                    } else
-                    {
-                        board += "\u254B";
-                        //cross \u254b
-                    }
-
-                } else
-                {
-                    if (column == 14)
-                    {
-                        board += "\u2503<br />";
-                        //straight up \u2503
-                    } else if (column % 2 == 0)
-                    {
-                        board += "\u2503";
-                        //straight up \u2503
-                    } else
-                    {
-                        board += this.gameBoard[arrayRow][arrayColumn];
-                        arrayColumn++;
-                    }
-                }
-            }
-            if (arrayColumn != 0)
-            {
-                arrayColumn = 0;
-                arrayRow++;
-            }
-        }
-        board += "</html>";
-        return board;
+        this.jButtonC0R0.setText(this.gameBoard[0][0] + "");
+        this.jButtonC1R0.setText(this.gameBoard[0][1] + "");
+        this.jButtonC2R0.setText(this.gameBoard[0][2] + "");
+        this.jButtonC3R0.setText(this.gameBoard[0][3] + "");
+        this.jButtonC4R0.setText(this.gameBoard[0][4] + "");
+        this.jButtonC5R0.setText(this.gameBoard[0][5] + "");
+        this.jButtonC6R0.setText(this.gameBoard[0][6] + "");
+        this.jButtonC0R1.setText(this.gameBoard[1][0] + "");
+        this.jButtonC1R1.setText(this.gameBoard[1][1] + "");
+        this.jButtonC2R1.setText(this.gameBoard[1][2] + "");
+        this.jButtonC3R1.setText(this.gameBoard[1][3] + "");
+        this.jButtonC4R1.setText(this.gameBoard[1][4] + "");
+        this.jButtonC5R1.setText(this.gameBoard[1][5] + "");
+        this.jButtonC6R1.setText(this.gameBoard[1][6] + "");
+        this.jButtonC0R2.setText(this.gameBoard[2][0] + "");
+        this.jButtonC1R2.setText(this.gameBoard[2][1] + "");
+        this.jButtonC2R2.setText(this.gameBoard[2][2] + "");
+        this.jButtonC3R2.setText(this.gameBoard[2][3] + "");
+        this.jButtonC4R2.setText(this.gameBoard[2][4] + "");
+        this.jButtonC5R2.setText(this.gameBoard[2][5] + "");
+        this.jButtonC6R2.setText(this.gameBoard[2][6] + "");
+        this.jButtonC0R3.setText(this.gameBoard[3][0] + "");
+        this.jButtonC1R3.setText(this.gameBoard[3][1] + "");
+        this.jButtonC2R3.setText(this.gameBoard[3][2] + "");
+        this.jButtonC3R3.setText(this.gameBoard[3][3] + "");
+        this.jButtonC4R3.setText(this.gameBoard[3][4] + "");
+        this.jButtonC5R3.setText(this.gameBoard[3][5] + "");
+        this.jButtonC6R3.setText(this.gameBoard[3][6] + "");
+        this.jButtonC0R4.setText(this.gameBoard[4][0] + "");
+        this.jButtonC1R4.setText(this.gameBoard[4][1] + "");
+        this.jButtonC2R4.setText(this.gameBoard[4][2] + "");
+        this.jButtonC3R4.setText(this.gameBoard[4][3] + "");
+        this.jButtonC4R4.setText(this.gameBoard[4][4] + "");
+        this.jButtonC5R4.setText(this.gameBoard[4][5] + "");
+        this.jButtonC6R4.setText(this.gameBoard[4][6] + "");
+        this.jButtonC0R5.setText(this.gameBoard[5][0] + "");
+        this.jButtonC1R5.setText(this.gameBoard[5][1] + "");
+        this.jButtonC2R5.setText(this.gameBoard[5][2] + "");
+        this.jButtonC3R5.setText(this.gameBoard[5][3] + "");
+        this.jButtonC4R5.setText(this.gameBoard[5][4] + "");
+        this.jButtonC5R5.setText(this.gameBoard[5][5] + "");
+        this.jButtonC6R5.setText(this.gameBoard[5][6] + "");
     }
 
     /**
@@ -523,6 +1587,48 @@ public class JFrameConnectFour extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonC0R0;
+    private javax.swing.JButton jButtonC0R1;
+    private javax.swing.JButton jButtonC0R2;
+    private javax.swing.JButton jButtonC0R3;
+    private javax.swing.JButton jButtonC0R4;
+    private javax.swing.JButton jButtonC0R5;
+    private javax.swing.JButton jButtonC1R0;
+    private javax.swing.JButton jButtonC1R1;
+    private javax.swing.JButton jButtonC1R2;
+    private javax.swing.JButton jButtonC1R3;
+    private javax.swing.JButton jButtonC1R4;
+    private javax.swing.JButton jButtonC1R5;
+    private javax.swing.JButton jButtonC2R0;
+    private javax.swing.JButton jButtonC2R1;
+    private javax.swing.JButton jButtonC2R2;
+    private javax.swing.JButton jButtonC2R3;
+    private javax.swing.JButton jButtonC2R4;
+    private javax.swing.JButton jButtonC2R5;
+    private javax.swing.JButton jButtonC3R0;
+    private javax.swing.JButton jButtonC3R1;
+    private javax.swing.JButton jButtonC3R2;
+    private javax.swing.JButton jButtonC3R3;
+    private javax.swing.JButton jButtonC3R4;
+    private javax.swing.JButton jButtonC3R5;
+    private javax.swing.JButton jButtonC4R0;
+    private javax.swing.JButton jButtonC4R1;
+    private javax.swing.JButton jButtonC4R2;
+    private javax.swing.JButton jButtonC4R3;
+    private javax.swing.JButton jButtonC4R4;
+    private javax.swing.JButton jButtonC4R5;
+    private javax.swing.JButton jButtonC5R0;
+    private javax.swing.JButton jButtonC5R1;
+    private javax.swing.JButton jButtonC5R2;
+    private javax.swing.JButton jButtonC5R3;
+    private javax.swing.JButton jButtonC5R4;
+    private javax.swing.JButton jButtonC5R5;
+    private javax.swing.JButton jButtonC6R0;
+    private javax.swing.JButton jButtonC6R1;
+    private javax.swing.JButton jButtonC6R2;
+    private javax.swing.JButton jButtonC6R3;
+    private javax.swing.JButton jButtonC6R4;
+    private javax.swing.JButton jButtonC6R5;
     private javax.swing.JButton jButtonColumn1;
     private javax.swing.JButton jButtonColumn2;
     private javax.swing.JButton jButtonColumn3;
@@ -537,12 +1643,14 @@ public class JFrameConnectFour extends javax.swing.JFrame
     private javax.swing.JLabel jLabelAIAnswer;
     private javax.swing.JLabel jLabelAIChoice;
     private javax.swing.JLabel jLabelConnectFourTitle;
+    private javax.swing.JLabel jLabelDifficultyAnswer;
     private javax.swing.JLabel jLabelDifficultyChoice;
-    private javax.swing.JLabel jLabelGameBoard;
     private javax.swing.JLabel jLabelInstructions;
     private javax.swing.JLabel jLabelPlayer1Marker;
     private javax.swing.JLabel jLabelPlayer1MarkerChoice;
     private javax.swing.JLabel jLabelPlayer2Marker;
     private javax.swing.JLabel jLabelPlayer2MarkerChoice;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

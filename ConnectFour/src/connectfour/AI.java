@@ -47,17 +47,17 @@ public class AI
         int move = 0;
         switch (this.level)
         {
-            case 1:
+            case 0:
                 move = RandomAIMove(board);
                 break;
-            case 2:
+            case 1:
                 move = WinningAIMove(board, turnCount);
                 if (move == 0)
                 {
                     move = RandomAIMove(board);
                 }
                 break;
-            case 3:
+            case 2:
                 move = WinningAIMove(board, turnCount);
                 if (move == 0)
                 {
@@ -68,7 +68,7 @@ public class AI
                     move = RandomAIMove(board);
                 }
                 break;
-            case 4:
+            case 3:
 
                 move = WinningAIMove(board, turnCount);
                 if (move == 0)
@@ -487,7 +487,7 @@ public class AI
 
     public String GetDifficultyLevel()
     {
-        return levelID.GetLevel();
+        return this.levelID.GetLevel();
     }
 
 }

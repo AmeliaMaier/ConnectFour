@@ -20,7 +20,7 @@ public enum Marker
     MARKER3 ('\u2600'),
     MARKER4 ('\u24CD'),
     MARKER5 ('\u25CE'),
-    EMPTY ('\u2591');
+    EMPTY (' ');
     
     private final char marker;
     
